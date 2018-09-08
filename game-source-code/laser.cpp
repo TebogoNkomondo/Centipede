@@ -6,7 +6,7 @@ using namespace std;
 
 
 
-Laser::Laser(sf::Vector2u size){
+Laser::Laser(){
 	if(!laser_.loadFromFile("resources/bullet.png")){
 		cout<<"falied to load laser file"<<endl;
 	}
@@ -24,7 +24,7 @@ void Laser::DrawBullet(sf::RenderWindow &window){
 }
 
 void Laser::Shoot(){
-		bullet_.move(0,-20);
+		bullet_.move(0,-10);
 }
 
 sf::Sprite Laser::GetLaser(){

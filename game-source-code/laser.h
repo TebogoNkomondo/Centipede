@@ -7,7 +7,7 @@
 class Laser{
 public:
 	friend class Player;
-	Laser(sf::Vector2u size);
+	Laser();
 	~Laser();
 	
 	void DrawBullet(sf::RenderWindow &window);
