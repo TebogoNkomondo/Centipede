@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cstdlib>
 #include "centipede.h"
+#include "player.h"
 
 using namespace std;
 
@@ -15,7 +16,9 @@ int main()
     
     
 //=====================================================Tebogo's member variables================================================================
-
+	Player player1;
+	//set player initial position
+	player1.setPosition(sf::Vector2f(window.getSize().x/2  , window.getSize().y-player1.GetPlayer().getScale().y*90 ));
 
 
 
@@ -26,12 +29,9 @@ int main()
         sf::Event event;
 		while(window.pollEvent(event))
         {
-            switch (event.type)
-            {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-            }
+			if(event.type == sf::Event::Closed){
+					window.close();
+				}
 		}
 //=============================================Oratile Goes here==================================================================
         auto sizeOfCentipede= theCentipede.getCentipedesize();
@@ -47,6 +47,10 @@ int main()
         }
 
 //====================================== Tebogo goes here======================================================================
+			player1.Draw(window);
+			player1.handleKey();
+
+//==============================================================================================================================
 
         window.display();
         window.clear();
