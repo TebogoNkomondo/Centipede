@@ -25,7 +25,7 @@ int main()
 	std::vector<Laser>bulletLoop;
 	bool isFiring;
 	std::vector<Laser>::const_iterator iter;
-	//window.setFramerateLimit(30);
+	window.setFramerateLimit(30);
 	//auto counter =0;
     
     

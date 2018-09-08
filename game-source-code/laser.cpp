@@ -24,7 +24,7 @@ void Laser::DrawBullet(sf::RenderWindow &window){
 }
 
 void Laser::Shoot(){
-		bullet_.move(0,-0.4);
+		bullet_.move(0,-10);
 }
 
 sf::Sprite Laser::GetLaser(){

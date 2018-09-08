@@ -32,7 +32,7 @@ void centipede::moveCentipedeRight(int centipedeSegment)
     //Move the centipede to the right
             if(myCentipede.at(centipedeSegment).getPosition().x <800 && flag.at(centipedeSegment) )
             {
-                myCentipede.at(centipedeSegment).move(0.4, 0.0f );
+                myCentipede.at(centipedeSegment).move(4, 0.0f );
             }
 }
 
@@ -52,7 +52,7 @@ void centipede::moveCentipedeLeft(int centipedeSegment)
 {
     if(!flag.at(centipedeSegment))
             {
-                myCentipede.at(centipedeSegment).move(-0.4, 0.0f );
+                myCentipede.at(centipedeSegment).move(-4, 0.0f );
             }
 }
 
