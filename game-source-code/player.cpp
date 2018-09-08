@@ -48,16 +48,16 @@ void Player::MoveRight(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(10,0);
+			player_.move(5,0);
 		}
 }
 
 void Player::MoveLeft(){
-		if(player_.getPosition().x <= player_.getScale().x*16){
+		if(player_.getPosition().x <= player_.getScale().x*15){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(-10,0);
+			player_.move(-5,0);
 		}
 }
 
@@ -66,7 +66,7 @@ void Player::MoveDown(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(0,10);
+			player_.move(0,5);
 		}
 }
 
@@ -75,6 +75,6 @@ void Player::MoveUp(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(0,-10);
+			player_.move(0,-5);
 		}
 }

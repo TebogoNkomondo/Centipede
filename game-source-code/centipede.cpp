@@ -18,7 +18,7 @@ centipede::centipede(int sizeOfCentipede)
         flag.push_back(true);
         myCentipede.push_back(centipedeSegment);
         myCentipede.at(i).setPosition(position, 0);
-        position+=25;
+        position+=15;
     }
 }
 
@@ -32,7 +32,7 @@ void centipede::moveCentipedeRight(int centipedeSegment)
     //Move the centipede to the right
             if(myCentipede.at(centipedeSegment).getPosition().x <800 && flag.at(centipedeSegment) )
             {
-                myCentipede.at(centipedeSegment).move(4, 0.0f );
+                myCentipede.at(centipedeSegment).move(3, 0.0f );
             }
 }
 
@@ -42,7 +42,7 @@ void centipede::moveCentipedeDown(int centipedeSegment)
             {
                 for(int j=0; j<50; j++)
                 {
-                    myCentipede.at(centipedeSegment).move(0.0f, 0.4f );
+                    myCentipede.at(centipedeSegment).move(0.0f,0.4f );
                 }
                 flag.at(centipedeSegment)= false;
             }
@@ -52,7 +52,7 @@ void centipede::moveCentipedeLeft(int centipedeSegment)
 {
     if(!flag.at(centipedeSegment))
             {
-                myCentipede.at(centipedeSegment).move(-4, 0.0f );
+                myCentipede.at(centipedeSegment).move(-3, 0.0f );
             }
 }
 

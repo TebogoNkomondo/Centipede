@@ -33,7 +33,7 @@ TEST_CASE("Check for right movement of player")
 	Player player2;
 	player2.setPosition(sf::Vector2f(400,400));
 	player2.MoveRight();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.3f,400.0f));
+    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(405,400.0f));
 }
 
 TEST_CASE("Check for left movement of player")
@@ -41,7 +41,7 @@ TEST_CASE("Check for left movement of player")
 	Player player2;
 	player2.setPosition(sf::Vector2f(400,400));
 	player2.MoveLeft();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(399.7f,400.0f));
+    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(395,400.0f));
 }
 
 
@@ -50,7 +50,7 @@ TEST_CASE("Check for up movement of player")
 	Player player2;
 	player2.setPosition(sf::Vector2f(400,700));
 	player2.MoveUp();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.0f,699.7f));
+    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.0f,695));
 }
 
 TEST_CASE("Check for down movement of player")
@@ -58,7 +58,7 @@ TEST_CASE("Check for down movement of player")
 	Player player2;
 	player2.setPosition(sf::Vector2f(400,550));
 	player2.MoveDown();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.0f,550.3f));
+    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.0f,555));
 }
 
 //============================================================Centipede Tests=========================================================
@@ -78,7 +78,7 @@ TEST_CASE("Check that the centipede moves to the right")
     
     centipede theCentipede(1);
     theCentipede.moveCentipedeRight(0);
-    CHECK(theCentipede.myCentipede.at(0).getPosition().x == 0.4f);
+    CHECK(theCentipede.myCentipede.at(0).getPosition().x == 3);
 }
 
 TEST_CASE("Check that the centipede moves down")
@@ -104,7 +104,7 @@ TEST_CASE("Check that the centipede moves to the left")
     theCentipede.flag.at(0)=false;
     theCentipede.myCentipede.at(0).setPosition(765,0);
     theCentipede.moveCentipedeLeft(0);
-    CHECK(theCentipede.myCentipede.at(0).getPosition().x == 764.6f);
+    CHECK(theCentipede.myCentipede.at(0).getPosition().x == 762);
 }
 
 //TEST_CASE("The centipede does not go out of screen bounds")
