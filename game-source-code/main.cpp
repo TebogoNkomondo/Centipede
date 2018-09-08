@@ -13,7 +13,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800,600),"CentipedeGame");
     
 //===================================================Oratile's member variables==========================================================================
-    centipede theCentipede(20);
+    centipede theCentipede(1);
     
     
 //=====================================================Tebogo's member variables================================================================

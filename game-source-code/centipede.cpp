@@ -67,37 +67,3 @@ void centipede::moveCentipedeUP(int centipedeSegment)
                 flag.at(centipedeSegment)= true;
             }
 }
-
-//void centipede::moveCentipede()
-//{
-//    for(int i=0; i<centipedeSize; i++)
-//        {
-//            //Move the centipede to the right
-//            if(myCentipede.at(i).getPosition().x <800 && flag.at(i) )
-//            {
-//                myCentipede.at(i).move(0.1f, 0.0f );
-//            }
-//            if(myCentipede.at(i).getPosition().x > 800 && flag.at(i))
-//            {
-//                for(int j=0; j<100; j++)
-//                {
-//                    myCentipede.at(i).move(0.0f, 0.1f );
-//                }
-//                flag.at(i)= false;
-//            }
-//           if(!flag.at(i))
-//            {
-//                myCentipede.at(i).move(-0.1f, 0.0f );
-//            }
-//            if(myCentipede.at(i).getPosition().x < 0 && !flag.at(i))
-//            {
-//                for(int t=0; t<100; t++)
-//                {
-//                    myCentipede.at(i).move (0.0f, 0.1f );
-//                }
-//                flag.at(i)= true;
-//            }
-//            
-//            window.draw(myCentipede.at(i));
-//        }
-//}
