@@ -16,11 +16,13 @@ public:
     
     int getCentipedesize();
     
-     vector <sf::CircleShape> myCentipede;
+     vector <sf::Sprite> myCentipede;
      vector <bool> flag;
     
 private:
     int centipedeSize;
+    sf::Texture mushroomTexture;
+    sf::Sprite centipedeSegment;
     //vector <sf::CircleShape> myCentipede;
     //vector <bool> flag;
 

@@ -2,10 +2,13 @@
 
 centipede::centipede(int sizeOfCentipede)
 {
-    //Initialize the centipede ;
-    sf::CircleShape player(5);
-    //player.setPosition(0, 0);
-    player.setFillColor(sf::Color::Green);
+    //set the centipede sprite
+    if(!mushroomTexture.loadFromFile("frame-6.png"))
+    {
+        cout<< "Load texture failed"<<endl;
+    }
+    centipedeSegment.setTexture(mushroomTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.1,0.1));
     
     centipedeSize= sizeOfCentipede;
     
@@ -13,9 +16,9 @@ centipede::centipede(int sizeOfCentipede)
     for(int i=0; i<centipedeSize; i++)
     {
         flag.push_back(true);
-        myCentipede.push_back(player);
+        myCentipede.push_back(centipedeSegment);
         myCentipede.at(i).setPosition(position, 0);
-        position+=10;
+        position+=25;
     }
 }
 

@@ -9,12 +9,21 @@ using namespace std;
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800,600),"CentipedeGame");
-    centipede theCentipede(20);
     
+//===================================================Oratile's member variables==========================================================================
+    centipede theCentipede(10);
+    
+    
+//=====================================================Tebogo's member variables================================================================
+
+
+
+
+//===============================================================================================================================================
     while(window.isOpen())
     {
+        //check that the window is not closed
         sf::Event event;
-		
 		while(window.pollEvent(event))
         {
             switch (event.type)
@@ -38,6 +47,7 @@ int main()
         }
 
 //====================================== Tebogo goes here======================================================================
+
         window.display();
         window.clear();
         
