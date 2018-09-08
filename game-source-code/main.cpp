@@ -13,7 +13,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800,600),"CentipedeGame");
     
 //===================================================Oratile's member variables==========================================================================
-    centipede theCentipede(10);
+    centipede theCentipede(20);
     
     
 //=====================================================Tebogo's member variables================================================================
@@ -25,8 +25,10 @@ int main()
 	std::vector<Laser>bulletLoop;
 	bool isFiring;
 	std::vector<Laser>::const_iterator iter;
-	window.setFramerateLimit(30);
+	//window.setFramerateLimit(30);
 	//auto counter =0;
+    
+    
 //===============================================================================================================================================
     while(window.isOpen())
     {

@@ -3,12 +3,12 @@
 centipede::centipede(int sizeOfCentipede)
 {
     //set the centipede sprite
-    if(!mushroomTexture.loadFromFile("frame-6.png"))
+    if(!mushroomTexture.loadFromFile("resources/soccerBall.png"))
     {
         cout<< "Load texture failed"<<endl;
     }
     centipedeSegment.setTexture(mushroomTexture);
-    centipedeSegment.setScale(sf::Vector2f(0.1,0.1));
+    centipedeSegment.setScale(sf::Vector2f(0.12,0.12));
     
     centipedeSize= sizeOfCentipede;
     
@@ -32,17 +32,17 @@ void centipede::moveCentipedeRight(int centipedeSegment)
     //Move the centipede to the right
             if(myCentipede.at(centipedeSegment).getPosition().x <800 && flag.at(centipedeSegment) )
             {
-                myCentipede.at(centipedeSegment).move(4, 0.0f );
+                myCentipede.at(centipedeSegment).move(0.4, 0.0f );
             }
 }
 
 void centipede::moveCentipedeDown(int centipedeSegment)
 {
-    if(myCentipede.at(centipedeSegment).getPosition().x > 800 && flag.at(centipedeSegment))
+    if(myCentipede.at(centipedeSegment).getPosition().x > 760 && flag.at(centipedeSegment))
             {
-                for(int j=0; j<100; j++)
+                for(int j=0; j<50; j++)
                 {
-                    myCentipede.at(centipedeSegment).move(0.0f, 0.3f );
+                    myCentipede.at(centipedeSegment).move(0.0f, 0.4f );
                 }
                 flag.at(centipedeSegment)= false;
             }
@@ -52,7 +52,7 @@ void centipede::moveCentipedeLeft(int centipedeSegment)
 {
     if(!flag.at(centipedeSegment))
             {
-                myCentipede.at(centipedeSegment).move(-4, 0.0f );
+                myCentipede.at(centipedeSegment).move(-0.4, 0.0f );
             }
 }
 
@@ -60,9 +60,9 @@ void centipede::moveCentipedeUP(int centipedeSegment)
 {
     if(myCentipede.at(centipedeSegment).getPosition().x < 0 && !flag.at(centipedeSegment))
             {
-                for(int t=0; t<100; t++)
+                for(int t=0; t<50; t++)
                 {
-                    myCentipede.at(centipedeSegment).move (0.0f, 0.3f );
+                    myCentipede.at(centipedeSegment).move (0.0f, 0.4f );
                 }
                 flag.at(centipedeSegment)= true;
             }
