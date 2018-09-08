@@ -48,7 +48,7 @@ void Player::MoveRight(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(10,0);
+			player_.move(0.3f,0);
 		}
 }
 
@@ -57,7 +57,7 @@ void Player::MoveLeft(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(-10,0);
+			player_.move(-0.3f,0);
 		}
 }
 
@@ -66,7 +66,7 @@ void Player::MoveDown(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(0,10);
+			player_.move(0,0.3f);
 		}
 }
 
@@ -75,6 +75,6 @@ void Player::MoveUp(){
 			player_.move(0,0);
 		}
 		else{
-			player_.move(0,-10);
+			player_.move(0,-0.3f);
 		}
 }
