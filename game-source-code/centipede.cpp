@@ -32,7 +32,7 @@ void centipede::moveCentipedeRight(int centipedeSegment)
     //Move the centipede to the right
             if(myCentipede.at(centipedeSegment).getPosition().x <800 && flag.at(centipedeSegment) )
             {
-                myCentipede.at(centipedeSegment).move(3, 0.0f );
+                myCentipede.at(centipedeSegment).move(5, 0.0f );
             }
 }
 
@@ -40,10 +40,10 @@ void centipede::moveCentipedeDown(int centipedeSegment)
 {
     if(myCentipede.at(centipedeSegment).getPosition().x > 760 && flag.at(centipedeSegment))
             {
-                for(int j=0; j<50; j++)
-                {
-                    myCentipede.at(centipedeSegment).move(0.0f,0.4f );
-                }
+                //for(int j=0; j<50; j++)
+                //{
+                    myCentipede.at(centipedeSegment).move(0.0f,15.0f );
+                //}
                 flag.at(centipedeSegment)= false;
             }
 }
@@ -52,7 +52,7 @@ void centipede::moveCentipedeLeft(int centipedeSegment)
 {
     if(!flag.at(centipedeSegment))
             {
-                myCentipede.at(centipedeSegment).move(-3, 0.0f );
+                myCentipede.at(centipedeSegment).move(-5, 0.0f );
             }
 }
 
@@ -60,10 +60,10 @@ void centipede::moveCentipedeUP(int centipedeSegment)
 {
     if(myCentipede.at(centipedeSegment).getPosition().x < 0 && !flag.at(centipedeSegment))
             {
-                for(int t=0; t<50; t++)
-                {
-                    myCentipede.at(centipedeSegment).move (0.0f, 0.4f );
-                }
+                //for(int t=0; t<50; t++)
+                //{
+                    myCentipede.at(centipedeSegment).move (0.0f, 15.0f );
+                //}
                 flag.at(centipedeSegment)= true;
             }
 }
