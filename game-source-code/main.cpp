@@ -2,7 +2,6 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
-#include "centipede.h"
 #include "player.h"
 #include "laser.h"
 #include "polyCentipede.h"
@@ -28,20 +27,24 @@ int main()
     splashMessage.setString("Welcome to the Centipede Game!\n\nInstructions:\nPress Space bar to shoot\nPress Right to move Right\nPress Left to move Left\nPress Down to move Down\nPress Up to move UP\n\nPress Enter to start the Game!!");
     
 //===================================================Oratile's member variables================================================================================================
-    //centipede theCentipede(10);
-    //centipede theCentipede(10);
-    int numOfcentipedes= 2;
+    int numOfcentipedes= 10;
     polyCentipede polyOne(numOfcentipedes);
     
-    //Declare a basic circle shape to display the movement of the centipede- pass this circle shape the coordinates
-    //of each and every segment piece as it moves along the screen
-    sf::CircleShape seg(5);
-    seg.setFillColor(sf::Color::Green);
+    sf::Sprite centipedeSegment;
+    sf::Texture centipedeTexture;
     
-    vector <sf::CircleShape> centipede (numOfcentipedes);
+    //set the centipede sprite
+    if(!centipedeTexture.loadFromFile("resources/soccerBall.png"))
+    {
+        cout<< "Load texture failed"<<endl;
+    }
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+    
+    vector <sf::Sprite> centipede (numOfcentipedes);
     for(int i=0; i<numOfcentipedes; i++)
     {
-        centipede.at(i)= seg;
+        centipede.at(i)= centipedeSegment;
         centipede.at(i).setPosition(polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate() );
     }
     
@@ -97,10 +100,6 @@ int main()
                 
             for(int i=0; i< numOfcentipedes; i++)
             {
-//                theCentipede.moveCentipedeRight(i);
-//                theCentipede.moveCentipedeDown(i);
-//                theCentipede.moveCentipedeLeft(i);
-//                theCentipede.moveCentipedeUP(i);
                 polyOne.myCentipede2.at(i).moveCentipedeSegment();
                 centipede.at(i).setPosition(polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate() );
                 

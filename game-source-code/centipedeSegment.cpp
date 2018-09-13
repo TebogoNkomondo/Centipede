@@ -25,7 +25,7 @@ void centipedeSegment::moveCentipedeSegment()
         {
             for(int j=0; j<3; j++)
             {
-                move(Direction::Down);
+                moveDown(Direction::Down);
             }
             sideBoundary =false;
         }
@@ -33,17 +33,19 @@ void centipedeSegment::moveCentipedeSegment()
         
     if(!sideBoundary)
             {
-               move(Direction::Left);
+               moveLeft(Direction::Left);
             }
             
     if(xPosition < 0 && !sideBoundary)
         {
             for(int t=0; t<3; t++)
             {
-                move (Direction::Down);
+                moveDown(Direction::Down);
             }
             sideBoundary= true;
         }
+        
+    //Implement moving up functionality when at the botoom of the screen
 }
 
 double centipedeSegment::get_xCoordinate()
