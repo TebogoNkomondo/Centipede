@@ -7,21 +7,21 @@ centipedeSegment::centipedeSegment(double xCoordinate, double yCoordinate )
     //set the initial cordinates of a centipede segment.
     xPosition = xCoordinate;
     yPosition = yCoordinate;
-    
-    //set the side boundary= true;
+
     sideBoundary= true;
 }
 
 //This will move a centipede once in the fitting direction according to the if statements
 void centipedeSegment::moveCentipedeSegment()
 {
+    
     if(xPosition <screen_Width && sideBoundary )
         {
             moveRight(Direction:: Right);
             cout<< xPosition<<endl;
         }
-            
-    if(xPosition > screen_Width-20 && sideBoundary)
+
+    if(xPosition > (screen_Width-15) && sideBoundary)
         {
             for(int j=0; j<3; j++)
             {
@@ -29,6 +29,7 @@ void centipedeSegment::moveCentipedeSegment()
             }
             sideBoundary =false;
         }
+    
         
     if(!sideBoundary)
             {
@@ -39,12 +40,20 @@ void centipedeSegment::moveCentipedeSegment()
         {
             for(int t=0; t<3; t++)
             {
-                move (Direction::Up);
+                move (Direction::Down);
             }
             sideBoundary= true;
         }
+}
 
+double centipedeSegment::get_xCoordinate()
+{
+    return xPosition;
+}
 
+double centipedeSegment::get_yCoordinate()
+{
+    return yPosition;
 }
 
 

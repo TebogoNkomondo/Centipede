@@ -4,7 +4,7 @@ double movableObject::moveSpeed(5);
 
 movableObject::movableObject()
 {
-    //There is nothing to do
+     //there's nothing to do
 }
 
 void movableObject::moveRight(Direction Right)

@@ -11,7 +11,7 @@ polyCentipede::polyCentipede(int lengthOfCentipede)
         //initialize centipede segments positions
         centipedeSegment oneSegment(position,0);
         myCentipede2.push_back(oneSegment);
-        position+=15;
+        position+=13;
     }
     
 }
