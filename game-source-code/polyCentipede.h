@@ -1,5 +1,7 @@
 #include "centipedeSegment.h"
 #include <vector>
+//A centipede must know its length
+#define length_of_centipede 12
 
 //A poly centipede is a centipede train
 class polyCentipede

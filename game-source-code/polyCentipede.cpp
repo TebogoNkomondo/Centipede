@@ -4,7 +4,7 @@ polyCentipede::polyCentipede(int lengthOfCentipede)
 {
     centipedeLength= lengthOfCentipede;
     
-    //declare centipedeSegments that form the centipede
+    //declare centipedeSegments that form the centipede and set their positions
     auto position=0;
     for(int i=0; i<centipedeLength; i++)
     {

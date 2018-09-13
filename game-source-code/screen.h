@@ -4,40 +4,31 @@
 
 using namespace std;
 
+//Thsi class will be responisble for drawing all movable objects and displaying 
+//Them on the screen as the game is being played
 class screen
 {
 public:
-	//inside the constructor we need to declare screen size (height and the width)
+	//Inside the constructor, declare the object that will be drawn on the screen
 	screen();
-	//This function will diplay the splsh screen
-	void splash_Screen();
-	//keep the spash screen message displayed
-	void keep_splash_Screen_Mesaage_Displayed(bool is_Enter_key);
-	//Keep the window open until it is manually closed
-	void keep_Window_Open();
+	
+	//show the splash screen message
+	void draw_Splash_Screen_Message(sf::RenderWindow& my_window);
 	//Pass a sprite to draw on the screen and display what the object is doing
-	void draw_Centipede(sf::Sprite object);
-	//Display movements of objects on the screen
-	void display_Object();
-	//clear the screen
-	void clear_Screen();
-	
-	//check if Enter key is pressed
-	bool is_Enter_Key_Pressed();
-	
+	void draw_Centipede(int segment_Index, double x_Position, double y_Position, sf::RenderWindow& my_window);
+
 private:  //Every that is a member of the screen calss should go here:
-	//the window:
-	sf::RenderWindow my_window;
 	//centipede Segment sprite
 	sf::Sprite centipedeSegment;
 	sf::Texture centipedeTexture;
 	
-	//splash screen mesaage dispay;
-	sf::Text splashMessage;
+	//splash screen mesage dispay;
+	sf::Text splash_Message;
 	
 	//Enter key flag
 	bool isEnter;
 	
+	//the vector of sprite centiede segments
 	vector <sf::Sprite> centipede;
 	
 };

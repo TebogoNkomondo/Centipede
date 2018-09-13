@@ -27,7 +27,7 @@ int main()
     splashMessage.setString("Welcome to the Centipede Game!\n\nInstructions:\nPress Space bar to shoot\nPress Right to move Right\nPress Left to move Left\nPress Down to move Down\nPress Up to move UP\n\nPress Enter to start the Game!!");
     
 //===================================================Oratile's member variables================================================================================================
-    int numOfcentipedes= 10;
+    int numOfcentipedes= length_of_centipede;
     polyCentipede polyOne(numOfcentipedes);
     
     sf::Sprite centipedeSegment;
@@ -142,7 +142,7 @@ int main()
 
             window.display();
             window.clear();
-        }
+       }
         
         //If Enter button has not been pressed
         else
