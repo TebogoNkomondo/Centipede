@@ -1,5 +1,8 @@
 #include "movableObject.h"
 #include <iostream>
+#define screen_Width 800
+#define screen_Height 600
+
 
 //A centipede segment is a movable object so inherit from movableObject class
 class centipedeSegment: public movableObject

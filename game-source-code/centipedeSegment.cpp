@@ -1,6 +1,4 @@
 #include "centipedeSegment.h"
-#define screen_Width 800
-#define screen_Height 600
 
 centipedeSegment::centipedeSegment(double xCoordinate, double yCoordinate )
 {
@@ -18,7 +16,6 @@ void centipedeSegment::moveCentipedeSegment()
     if(xPosition <screen_Width && sideBoundary )
         {
             moveRight(Direction:: Right);
-            cout<< xPosition<<endl;
         }
 
     if(xPosition > (screen_Width-15) && sideBoundary)
