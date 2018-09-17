@@ -1,13 +1,14 @@
 #ifndef Player_H
 #define Player_H
 
+#include "movableObject.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
 
-class Player{
+class Player : public movableObject {
 public:
 	Player();
 	~Player();
@@ -23,7 +24,7 @@ public:
 	sf::Sprite GetPlayer();
 	void setPosition(sf::Vector2f newPos);
 	
-private:
+protected:
 	sf::Texture real_;
 	sf::Sprite player_;
 	int windowWidth = 800;

@@ -1,4 +1,5 @@
 //#include "screen.h"
+#include "player.h"
 #include "bullet_Centipede_Collison_Handle.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
@@ -6,12 +7,12 @@ using namespace std;
 int main()
 {
 	//render the winow we are working on
-	sf::RenderWindow window (sf::VideoMode(screen_Width, screen_Height),"The Centipede Game",sf::Style::Titlebar);
+	sf::RenderWindow window (sf::VideoMode(screen_Width, screen_Height),"The Centipede Game",sf::Style::Default);
 	auto startTheGame= false;
 	window.setFramerateLimit(30);
 	
 	//make an object of the screen class to initialize its constructor variables
-	screen my_srceen;
+	screen my_screen;
 	
 	//===================================================================Oratile's member variables===========================================
 	//Declare the centipede train and its size;   
@@ -20,10 +21,6 @@ int main()
 	
 	//===================================================================Tebogos's member variable=====================================================
 	
-	
-	
-	
-	
 //===========================================================================================================================================
 	while(window.isOpen())
     {
@@ -31,27 +28,12 @@ int main()
         sf::Event event;
 		while(window.pollEvent(event))
         {
-            switch(event.type)
-            {
-                //check that the window is not closed
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                    
-                //Check if the enter key has been presed. If it is set 'startTheGame' to true
-                case sf::Event::KeyPressed:
-                    switch (event.key.code)
-                        {
-                        case sf::Keyboard::Enter:
-                            startTheGame= true;
-                            break;
-                            
-                        default:
-                            break;
-                        }
-                default:
-                    break;
-            }
+            if(event.type == sf::Event::Closed){
+				window.close();
+			}
+			if(event.key.code == sf::Keyboard::Enter){
+				startTheGame = true;
+			}
 
 		}
 		
@@ -63,26 +45,20 @@ int main()
 		 for(int i=0; i< length_of_centipede; i++)
             {
                 polyOne.myCentipede2.at(i).moveCentipedeSegment();
-				my_srceen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
+				my_screen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
 				
 				//Assume there is a collision at the second segment
-				bullet_and_centipede.setcentipedeSegmentScale_zero(my_srceen.centipede, my_srceen.centipede.size() - 2);
+				bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
 			}
 			
 			
 		
 //================================================================Tebogo goes here==========================================================
-		
+				my_screen.drawPlayer(window);
+//==========================================================================================================================================
 			window.display();
 			window.clear();
 		}
-		
-//		else
-//		{
-//			my_srceen.draw_Splash_Screen_Message(window);
-//			window.display();
-//			window.clear();
-//		}
 		
 	}
 

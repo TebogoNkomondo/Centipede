@@ -68,28 +68,12 @@ int main()
         sf::Event event;
 		while(window.pollEvent(event))
         {
-            switch(event.type)
-            {
-                //check that the window is not closed
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                    
-                //Check if the enter key has been presed. If it is set 'startTheGame' to true
-                case sf::Event::KeyPressed:
-                    switch (event.key.code)
-                        {
-                        case sf::Keyboard::Enter:
-                            startTheGame= true;
-                            break;
-                            
-                        default:
-                            break;
-                        }
-                default:
-                    break;
-            }
-
+            if(event.type == sf::Event::Closed){
+				window.close();
+			}
+			if(event.key.code == sf::Keyboard::Enter){
+				startTheGame = true;
+			}
 		}
         
         //If the Enter button has been pressed

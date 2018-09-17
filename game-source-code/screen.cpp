@@ -37,11 +37,16 @@ screen::screen()
 
 void screen::draw_Splash_Screen_Message(sf::RenderWindow& my_window)
 {
-	my_window.draw(splash_Message);
+	my_window.draw(splash_Message);        
 }
 
 void screen::draw_Centipede(int segment_Index, double x_Position, double y_Position, sf::RenderWindow& my_window )
 {
 	centipede.at(segment_Index).setPosition(x_Position, y_Position);
 	my_window.draw(centipede.at(segment_Index));
+}
+
+void screen::drawPlayer(sf::RenderWindow& window){
+	playyer.handleKey();
+	playyer.Draw(window);
 }

@@ -9,6 +9,9 @@ Player::Player(){
 	}
 	player_.setTexture(real_);
 	player_.setScale(sf::Vector2f(0.35,0.35));
+	player_.setPosition(sf::Vector2f(windowWidth/2,windowHeight-windowHeight/20));
+	xPosition = player_.getPosition().x;
+	yPosition = player_.getPosition().y;
 }
 
 Player::~Player(){
@@ -45,36 +48,40 @@ void Player::handleKey(){
 
 void Player::MoveRight(){
 		if(player_.getPosition().x >= windowWidth-player_.getScale().x*90){
-			player_.move(0,0);
+			player_.setPosition(xPosition,yPosition);
 		}
 		else{
-			player_.move(5,0);
+			moveRight(Direction:: Right);
+			player_.setPosition(xPosition,yPosition);
 		}
 }
 
 void Player::MoveLeft(){
 		if(player_.getPosition().x <= player_.getScale().x*15){
-			player_.move(0,0);
+			player_.setPosition(xPosition,yPosition);
 		}
 		else{
-			player_.move(-5,0);
+			moveLeft(Direction:: Left);
+			player_.setPosition(xPosition,yPosition);
 		}
 }
 
 void Player::MoveDown(){
 		if(player_.getPosition().y >= windowHeight-player_.getScale().y*90){
-			player_.move(0,0);
+			player_.setPosition(xPosition,yPosition);
 		}
 		else{
-			player_.move(0,5);
+			moveDown(Direction:: Down);
+			player_.setPosition(xPosition,yPosition);
 		}
 }
 
 void Player::MoveUp(){
 		if(player_.getPosition().y <= windowHeight - player_.getScale().y*300){
-			player_.move(0,0);
+			player_.setPosition(xPosition,yPosition);
 		}
 		else{
-			player_.move(0,-5);
+			moveUp(Direction:: Up);
+			player_.setPosition(xPosition,yPosition);
 		}
 }
