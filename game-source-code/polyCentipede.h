@@ -11,6 +11,8 @@ public:
     polyCentipede(int lengthOfCentipede);
     //Create a vector of centepede objects 
     vector<centipedeSegment> myCentipede2;
+	
+	//Also create a vector of vectors: vector of type myCentipedes
     
 private:
     int centipedeLength;

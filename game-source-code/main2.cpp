@@ -1,4 +1,5 @@
-#include "screen.h"
+//#include "screen.h"
+#include "bullet_Centipede_Collison_Handle.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
 
@@ -15,6 +16,7 @@ int main()
 	//===================================================================Oratile's member variables===========================================
 	//Declare the centipede train and its size;   
 	polyCentipede polyOne(length_of_centipede);
+	bulletCentipeteCollision bullet_and_centipede;
 	
 	//===================================================================Tebogos's member variable=====================================================
 	
@@ -57,11 +59,17 @@ int main()
 		if (startTheGame)
 		{
 //=================================================================Oratile goes here========================================================
+		
 		 for(int i=0; i< length_of_centipede; i++)
             {
                 polyOne.myCentipede2.at(i).moveCentipedeSegment();
 				my_srceen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
+				
+				//Assume there is a collision at the second segment
+				bullet_and_centipede.setcentipedeSegmentScale_zero(my_srceen.centipede, my_srceen.centipede.size() - 2);
 			}
+			
+			
 		
 //================================================================Tebogo goes here==========================================================
 		
