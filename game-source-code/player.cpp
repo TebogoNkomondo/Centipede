@@ -43,11 +43,10 @@ void Player::handleKey(){
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
 		MoveUp();
 	}
-	
 }
 
 void Player::MoveRight(){
-		if(player_.getPosition().x >= windowWidth-player_.getScale().x*90){
+		if(xPosition >= windowWidth-windowWidth/23){
 			player_.setPosition(xPosition,yPosition);
 		}
 		else{
@@ -57,7 +56,7 @@ void Player::MoveRight(){
 }
 
 void Player::MoveLeft(){
-		if(player_.getPosition().x <= player_.getScale().x*15){
+		if(xPosition <= xPosition/15){
 			player_.setPosition(xPosition,yPosition);
 		}
 		else{
@@ -67,7 +66,7 @@ void Player::MoveLeft(){
 }
 
 void Player::MoveDown(){
-		if(player_.getPosition().y >= windowHeight-player_.getScale().y*90){
+		if(yPosition >= windowHeight-yPosition/19){
 			player_.setPosition(xPosition,yPosition);
 		}
 		else{
@@ -77,11 +76,19 @@ void Player::MoveDown(){
 }
 
 void Player::MoveUp(){
-		if(player_.getPosition().y <= windowHeight - player_.getScale().y*300){
+		if(yPosition <= windowHeight-yPosition/5){
 			player_.setPosition(xPosition,yPosition);
 		}
 		else{
 			moveUp(Direction:: Up);
 			player_.setPosition(xPosition,yPosition);
 		}
+}
+
+float Player::getXPos(){
+	return xPosition;
+}
+
+float Player::getYPos(){
+	return yPosition;
 }

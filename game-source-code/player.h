@@ -20,13 +20,15 @@ public:
 	void MoveDown();
 	void MoveLeft();
 	void MoveRight();
-	
+	float getXPos();
+	float getYPos();
 	sf::Sprite GetPlayer();
 	void setPosition(sf::Vector2f newPos);
 	
 protected:
 	sf::Texture real_;
 	sf::Sprite player_;
+private:
 	int windowWidth = 800;
 	int windowHeight = 600;
 };

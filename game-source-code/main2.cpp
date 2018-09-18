@@ -1,5 +1,6 @@
 //#include "screen.h"
 #include "player.h"
+#include "bulletContainer.h"
 #include "bullet_Centipede_Collison_Handle.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
@@ -56,6 +57,7 @@ int main()
 //================================================================Tebogo goes here==========================================================
 				my_screen.drawPlayer(window);
 //==========================================================================================================================================
+			
 			window.display();
 			window.clear();
 		}

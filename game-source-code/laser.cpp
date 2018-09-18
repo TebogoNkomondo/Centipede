@@ -20,25 +20,22 @@ Laser::~Laser(){
 
 void Laser::DrawBullet(sf::RenderWindow &window){
 	window.draw(bullet_);
-	
 }
 
 void Laser::Shoot(){
-		bullet_.move(0,-10);
+	//moveUp(Direction:: Up);
+	//bullet_.setPosition(xPosition,yPosition);
+	bullet_.move(0,-10);
 }
 
-sf::Sprite Laser::GetLaser(){
+
+void Laser::setPosition(float x,float y){
+	bullet_.setPosition(x,y);
+}
+
+sf::Sprite Laser::getBullet(){
 	return bullet_;
 }
-
-void Laser::setPosition(sf::Vector2f newPos){
-	bullet_.setPosition(newPos);
-}
-
-void Laser::deleteBullet(){
-	bullet_.setScale(sf::Vector2f(0,0));
-}
-
 
 
 

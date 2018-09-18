@@ -2,19 +2,18 @@
 #define LASER_H
 
 #include "player.h"
+#include "movableObject.h"
 
 
-class Laser{
+class Laser : public movableObject {
 public:
-	friend class Player;
 	Laser();
 	~Laser();
 	
 	void DrawBullet(sf::RenderWindow &window);
 	void Shoot();
-	void setPosition(sf::Vector2f newPos);
-	sf::Sprite GetLaser();
-	void deleteBullet();
+	void setPosition(float x, float y);
+	sf::Sprite getBullet();
 
 private: 
 	sf::Texture laser_;

@@ -48,5 +48,14 @@ void screen::draw_Centipede(int segment_Index, double x_Position, double y_Posit
 
 void screen::drawPlayer(sf::RenderWindow& window){
 	playyer.handleKey();
+	auto x = BulletContainer::getXPos();
+	auto y = BulletContainer::getYPos();
 	playyer.Draw(window);
+	BulletContainer::shootKey();
+	BulletContainer::addBullet(x,y);
+	BulletContainer::handleKey();
+	BulletContainer::DrawBullets(window);
+	BulletContainer::deleteBullets();
+	
 }
+
