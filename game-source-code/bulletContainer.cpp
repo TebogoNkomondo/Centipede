@@ -37,12 +37,7 @@ void BulletContainer::deleteBullets(){
 			bulletLoop.erase(iter);
 		}
 	counter++;
-/*		if(bulletLoop.size()<=2){
-			counter=0;
-			break;
-		}*/
 	}
-	cout<<bulletLoop.size()<<std::endl;
 }
 
 

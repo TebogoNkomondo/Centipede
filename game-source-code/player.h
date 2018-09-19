@@ -16,8 +16,8 @@ public:
 	void Draw(sf::RenderWindow &window);
 	//movement functions
 	void handleKey();
-	void MoveUp();
-	void MoveDown();
+	void MovePlayerUp();
+	void MovePlayerDown();
 	void MoveLeft();
 	void MoveRight();
 	float getXPos();

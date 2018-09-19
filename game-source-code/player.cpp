@@ -38,10 +38,10 @@ void Player::handleKey(){
 		MoveLeft();
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)){
-		MoveDown();
+		MovePlayerDown();
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)){
-		MoveUp();
+		MovePlayerUp();
 	}
 }
 
@@ -65,7 +65,7 @@ void Player::MoveLeft(){
 		}
 }
 
-void Player::MoveDown(){
+void Player::MovePlayerDown(){
 		if(yPosition >= windowHeight-yPosition/19){
 			player_.setPosition(xPosition,yPosition);
 		}
@@ -75,7 +75,7 @@ void Player::MoveDown(){
 		}
 }
 
-void Player::MoveUp(){
+void Player::MovePlayerUp(){
 		if(yPosition <= windowHeight-yPosition/5){
 			player_.setPosition(xPosition,yPosition);
 		}

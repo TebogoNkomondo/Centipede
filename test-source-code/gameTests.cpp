@@ -34,7 +34,7 @@ TEST_CASE("Check for right movement of player")
 	Player player2;
 	player2.setPosition(sf::Vector2f(400,400));
 	player2.MoveRight();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(405,400.0f));
+    CHECK(player2.GetPlayer().getPosition().x == 405);
 }
 
 TEST_CASE("Check for left movement of player")
@@ -42,24 +42,32 @@ TEST_CASE("Check for left movement of player")
 	Player player2;
 	player2.setPosition(sf::Vector2f(400,400));
 	player2.MoveLeft();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(395,400.0f));
+    CHECK(player2.GetPlayer().getPosition().x == 395);
 }
 
 TEST_CASE("Check for up movement of player")
 {
 	Player player2;
-	player2.setPosition(sf::Vector2f(400,700));
-	player2.MoveUp();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.0f,695));
+	player2.setPosition(sf::Vector2f(400,570));
+	player2.MovePlayerUp();
+    CHECK(player2.GetPlayer().getPosition().y == 565);
 }
 
 TEST_CASE("Check for down movement of player")
 {
 	Player player2;
-	player2.setPosition(sf::Vector2f(400,550));
-	player2.MoveDown();
-    CHECK(player2.GetPlayer().getPosition() == sf::Vector2f(400.0f,555));
+	player2.setPosition(sf::Vector2f(400,565));
+	player2.MovePlayerDown();
+    CHECK(player2.GetPlayer().getPosition().y == 570);
 }
+
+/*TEST_CASE("Check for down movement of player")
+{
+	Player player2;
+	player2.setPosition(sf::Vector2f(780,565));
+	player2.MoveRight();
+    CHECK(player2.GetPlayer().getPosition().x == 570);
+}*/
 
 
 //============================================================Poly Centipede Tests=========================================================
