@@ -1,3 +1,6 @@
+#ifndef POLYCENTIPEDE_H
+#define POLYCENTIPEDE_H
+
 #include "centipedeSegment.h"
 #include <vector>
 //A centipede must know its length
@@ -17,3 +20,5 @@ public:
 private:
     int centipedeLength;
 };
+
+#endif

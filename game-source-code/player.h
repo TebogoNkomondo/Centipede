@@ -1,5 +1,5 @@
-#ifndef Player_H
-#define Player_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "movableObject.h"
 #include <SFML/Graphics.hpp>

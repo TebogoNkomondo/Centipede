@@ -3,6 +3,7 @@
 #include "bulletContainer.h"
 #include "bullet_Centipede_Collison_Handle.h"
 #include <SFML/Graphics.hpp>
+#include "splashScreen.h"
 using namespace std;
 
 int main()
@@ -21,7 +22,9 @@ int main()
 	bulletCentipeteCollision bullet_and_centipede;
 	
 	//===================================================================Tebogos's member variable=====================================================
-	
+	SplashScreen SPScreen;
+	SPScreen.drawSplashScreen(window);
+
 //===========================================================================================================================================
 	while(window.isOpen())
     {
@@ -35,12 +38,14 @@ int main()
 			if(event.key.code == sf::Keyboard::Enter){
 				startTheGame = true;
 			}
-
 		}
 		
+		if(startTheGame==false){
+			SPScreen.drawSplashScreen(window);
+		}
+
 		//If the Enter button has been pressed: Proceed to play the game
-		if (startTheGame)
-		{
+		if (startTheGame){
 //=================================================================Oratile goes here========================================================
 		
 		 for(int i=0; i< length_of_centipede; i++)
@@ -51,9 +56,6 @@ int main()
 				//Assume there is a collision at the second segment
 				bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
 			}
-			
-			
-		
 //================================================================Tebogo goes here==========================================================
 				my_screen.drawPlayer(window);
 //==========================================================================================================================================
@@ -61,7 +63,11 @@ int main()
 			window.display();
 			window.clear();
 		}
-		
+		else{
+			SPScreen.drawSplashScreen(window);
+			window.display();
+			window.clear();
+		}
 	}
 
 }

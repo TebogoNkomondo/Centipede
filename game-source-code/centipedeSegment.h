@@ -1,3 +1,6 @@
+#ifndef CENTIPEDESEGMENT_H
+#define CENTIPEDESEGMENT_H
+
 #include "movableObject.h"
 #include <iostream>
 #define screen_Width 800
@@ -24,3 +27,5 @@ private:
     //A movable object should know when it is at the boundary of the screen
     bool sideBoundary;
 };
+
+#endif

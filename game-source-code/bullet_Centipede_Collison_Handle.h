@@ -1,3 +1,6 @@
+#ifndef BULLET_CENTIPEDE_COLLISION_HANDLE_H
+#define BULLET_CENTIPEDE_COLLISION_HANDLE_H
+
 #include "screen.h"
 //This class will be responsibke for handing collisions
 //between the bullet and the centipede.
@@ -19,3 +22,5 @@ private:
 	int collisionIndex;
 
 };
+
+#endif

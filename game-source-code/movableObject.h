@@ -1,5 +1,5 @@
-#ifndef MOVABLE_OBJECT_H
-#define MOVABLE_OBJECT_H
+#ifndef MOVABLEOBJECT_H
+#define MOVABLEOBJECT_H
 using namespace std;
 
 enum class Direction

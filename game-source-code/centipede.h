@@ -1,3 +1,6 @@
+#ifndef CENTIPEDE_H
+#define CENTIPEDE_H
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
@@ -27,3 +30,5 @@ private:
     //vector <bool> flag;
 
 };
+
+#endif

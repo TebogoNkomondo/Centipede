@@ -1,3 +1,6 @@
+#ifndef SCREEN_H
+#define SCREEN_H
+
 #include <SFML/Graphics.hpp>
 #include "polyCentipede.h"
 #include "player.h"
@@ -40,3 +43,5 @@ private:  //Every that is a member of the screen calss should go here:
 	Player playyer;
 	
 };
+
+#endif
