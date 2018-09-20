@@ -11,8 +11,14 @@ singleMushroom::singleMushroom()
 
 void singleMushroom::setSingleMushroomPosition()
 {
-	xCoordinate= rand()%750 + 30;
-	yCoordinate= rand()%550 +30;
+	//Make both x and y coordinates of mushroom multiples of 5;
+	do{
+		xCoordinate= rand()%750 + 30;
+	}while(xCoordinate % 5 !=0);
+	
+	do{
+		yCoordinate= rand()%550 +30;
+	}while(yCoordinate %5 !=0);
 	
 	cout<<xCoordinate<< " "<<yCoordinate<<endl;
 }

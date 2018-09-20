@@ -28,7 +28,7 @@ screen::screen()
 		cout<<"falied to load mushroom file"<<endl;
 	}
 	mushroom_.setTexture(mush_);
-	mushroom_.setScale(sf::Vector2f(0.28,0.28));
+	mushroom_.setScale(sf::Vector2f(0.14,0.14));
 	
 	for(int i=0; i< numberOfRandomMushrooms; i++)
     {
@@ -38,7 +38,11 @@ screen::screen()
 		mushroomsOnTheScreen.push_back(mushroom_);
         mushroomsOnTheScreen.at(i).setPosition(mushrooms.at(i).getX_position(), mushrooms.at(i).getyPositition() );
     }
-	
+}
+
+vector<singleMushroom> screen::getVectorOfMushrooms()
+{
+	return mushrooms;
 }
 
 void screen::draw_Centipede(int segment_Index, double x_Position, double y_Position, sf::RenderWindow& my_window )

@@ -25,6 +25,8 @@ public:
 	
 	void drawMushroom(sf::RenderWindow& window);
 	
+	//get the created vector of mushrooms
+	vector <singleMushroom> getVectorOfMushrooms();
 	//the vector of sprite centiede segments
 	vector <sf::Sprite> centipede;
 	vector <sf::Sprite> mushroomsOnTheScreen;

@@ -14,7 +14,7 @@ public:
     //centipede parameters
     centipedeSegment(double xCoordinate, double yCoordinate);
     //Function to move centipede in suitable direction
-    void moveCentipedeSegment();
+    void moveCentipedeSegment(bool mushroomCollision);
     
     //get x coordinate of centipedeSegment
     double get_xCoordinate();
@@ -25,6 +25,7 @@ public:
 private:
     //A movable object should know when it is at the boundary of the screen
     bool sideBoundary;
+	bool mushroomCollision;
 };
 
 #endif

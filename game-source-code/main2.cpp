@@ -2,6 +2,7 @@
 #include "player.h"
 #include "bulletContainer.h"
 #include "bullet_Centipede_Collison_Handle.h"
+#include "mushroomCollisionHandler.h"
 #include "singleMushroom.h"
 #include <SFML/Graphics.hpp>
 #include "splashScreen.h"
@@ -19,13 +20,12 @@ int main()
 	
 	//make an object of the screen class to initialize its constructor variables
 	screen my_screen;
-	singleMushroom oneMushroom;
-	oneMushroom.setSingleMushroomPosition();
-	
+	mushroomCollisionHandler handleMushroomCollisions;
 	//===================================================================Oratile's member variables===========================================
 	//Declare the centipede train and its size;   
 	polyCentipede polyOne(length_of_centipede);
 	bulletCentipeteCollision bullet_and_centipede;
+	bool collided;
 	
 	//===================================================================Tebogos's member variable=====================================================
 	SplashScreen SPScreen;
@@ -56,11 +56,14 @@ int main()
 		my_screen.drawMushroom(window);
 		 for(int i=0; i< length_of_centipede; i++)
             {
-                polyOne.myCentipede2.at(i).moveCentipedeSegment();
+                polyOne.myCentipede2.at(i).moveCentipedeSegment(collided);
+				collided= handleMushroomCollisions.isCollision(polyOne, my_screen, i);
+				if(collided)
+					cout <<collided<<endl;
 				my_screen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
 				
 				//Assume there is a collision at the second segment
-				bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
+				//bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
 			}
 
 //================================================================Tebogo goes here==========================================================
