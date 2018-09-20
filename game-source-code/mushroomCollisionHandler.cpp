@@ -11,20 +11,23 @@ bool mushroomCollisionHandler::isCollision (polyCentipede& centipedeTrain, scree
 	//reset the boolean
 	collision= false;
 	
-	centipedeX=centipedeTrain.myCentipede2.at((length_of_centipede- 1) - index).get_xCoordinate();
-	centipedeY= centipedeTrain.myCentipede2.at((length_of_centipede-1) -index).get_yCoordinate();
+	centipedeX=centipedeTrain.myCentipede2.at(index ).get_xCoordinate();
+	centipedeY= centipedeTrain.myCentipede2.at(index ).get_yCoordinate();
 	
 	for(unsigned int j=0; j<my_screen.getVectorOfMushrooms().size(); j++ )
 	{
 		mushX=my_screen.getVectorOfMushrooms().at(j).getX_position();
 		mushY= my_screen.getVectorOfMushrooms().at(j).getyPositition();
-
-		if(centipedeX== mushX)
+		centipedeCirc= sqrt(pow(centipedeX,2) + pow(centipedeY,2));
+		mushCirc= sqrt(pow(mushX,2)+ pow(mushY,2));
+		
+		if(centipedeCirc+0.5<mushCirc || centipedeCirc-0.5 < mushCirc || centipedeCirc== mushCirc)
 		{
-			if(centipedeY== mushY)
+			if(centipedeX == mushX)
 			{
 				collision= true;
-				cout<< centipedeX<<"	"<<centipedeY<<endl;
+				cout<< centipedeX <<"	"<<centipedeY<<endl;
+				return collision;
 			}
 		}
 	}

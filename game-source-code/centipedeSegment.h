@@ -26,6 +26,8 @@ private:
     //A movable object should know when it is at the boundary of the screen
     bool sideBoundary;
 	bool mushroomCollision;
+	bool bottomOfSCreenLeft;
+	bool bottomOfScreenRight;
 };
 
 #endif

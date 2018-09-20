@@ -22,5 +22,7 @@ private:
 	int mushX;
 	int mushY;
 	int numberOfMushrooms;
+	int centipedeCirc;
+	int mushCirc;
 	
 };

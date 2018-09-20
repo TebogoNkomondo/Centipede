@@ -8,31 +8,34 @@ centipedeSegment::centipedeSegment(double xCoordinate, double yCoordinate )
 	mushroomCollision= false;
 
     sideBoundary= true;
+	bottomOfSCreenLeft= false;
+	bottomOfScreenRight= false;
 }
 
 //This will move a centipede once in the fitting direction according to the if statements
 void centipedeSegment::moveCentipedeSegment(bool mushroomCollision)
 {
     
-    if( (xPosition <screen_Width) && sideBoundary && !mushroomCollision )
+    if( ( (xPosition <screen_Width) && sideBoundary ) || mushroomCollision || bottomOfScreenRight )
         {
             moveRight(Direction:: Right);
         }
 
-    if( (xPosition > (screen_Width-15)) && sideBoundary || mushroomCollision)
+    if( (xPosition > (screen_Width-15) && sideBoundary )|| mushroomCollision)
         {
             for(int j=0; j<3; j++)
             {
-                moveDown(Direction::Down);
+                moveDown(Direction:: Down);
             }
             sideBoundary =false;
         }
     
         
-    if(!sideBoundary || mushroomCollision)
-            {
-               moveLeft(Direction::Left);
-            }
+    if( (!sideBoundary) || (mushroomCollision) || bottomOfSCreenLeft )
+		{
+			moveLeft(Direction::Left);
+			
+		}
             
     if(xPosition < 0 && !sideBoundary)
         {
@@ -42,8 +45,20 @@ void centipedeSegment::moveCentipedeSegment(bool mushroomCollision)
             }
             sideBoundary= true;
         }
-        
-    //Implement moving up functionality when at the botoom of the screen
+		
+	if( (xPosition< 0 && yPosition >screen_Height-15 ) || (xPosition >screen_Width-45 && yPosition> screen_Height-30) ) 
+	{
+		for(int i=0; i< 20; i++)
+		{
+			moveUp(Direction::Up);
+		}
+		
+		if(xPosition <0 && yPosition> screen_Height-15)
+			bottomOfScreenRight=true;
+
+		if(xPosition> screen_Width-45 && yPosition> screen_Height-30)
+			bottomOfSCreenLeft= true;
+	}
 }
 
 double centipedeSegment::get_xCoordinate()
