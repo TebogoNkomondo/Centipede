@@ -46,7 +46,7 @@ void centipedeSegment::moveCentipedeSegment(bool mushroomCollision)
             sideBoundary= true;
         }
 		
-	if( (xPosition< 0 && yPosition >screen_Height-15 ) || (xPosition >screen_Width-45 && yPosition> screen_Height-30) ) 
+	if( (xPosition< 0 && yPosition >screen_Height-15 ) || (xPosition >screen_Width-20 && yPosition> screen_Height-25) ) 
 	{
 		for(int i=0; i< 20; i++)
 		{
@@ -56,7 +56,7 @@ void centipedeSegment::moveCentipedeSegment(bool mushroomCollision)
 		if(xPosition <0 && yPosition> screen_Height-15)
 			bottomOfScreenRight=true;
 
-		if(xPosition> screen_Width-45 && yPosition> screen_Height-30)
+		if(xPosition> screen_Width-20 && yPosition> screen_Height-25)
 			bottomOfSCreenLeft= true;
 	}
 }
