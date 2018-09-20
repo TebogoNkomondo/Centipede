@@ -11,7 +11,6 @@
 class centipedeSegment: public movableObject
 {
 public:
-    friend class polyCentipede;
     //centipede parameters
     centipedeSegment(double xCoordinate, double yCoordinate);
     //Function to move centipede in suitable direction

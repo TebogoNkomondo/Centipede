@@ -2,8 +2,11 @@
 #include "player.h"
 #include "bulletContainer.h"
 #include "bullet_Centipede_Collison_Handle.h"
+#include "singleMushroom.h"
 #include <SFML/Graphics.hpp>
 #include "splashScreen.h"
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 int main()
@@ -12,9 +15,12 @@ int main()
 	sf::RenderWindow window (sf::VideoMode(screen_Width, screen_Height),"The Centipede Game",sf::Style::Default);
 	auto startTheGame= false;
 	window.setFramerateLimit(30);
+	srand(time(0));
 	
 	//make an object of the screen class to initialize its constructor variables
 	screen my_screen;
+	singleMushroom oneMushroom;
+	oneMushroom.setSingleMushroomPosition();
 	
 	//===================================================================Oratile's member variables===========================================
 	//Declare the centipede train and its size;   
@@ -47,7 +53,7 @@ int main()
 		//If the Enter button has been pressed: Proceed to play the game
 		if (startTheGame){
 //=================================================================Oratile goes here========================================================
-		
+		my_screen.drawMushroom(window);
 		 for(int i=0; i< length_of_centipede; i++)
             {
                 polyOne.myCentipede2.at(i).moveCentipedeSegment();
@@ -56,6 +62,7 @@ int main()
 				//Assume there is a collision at the second segment
 				bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
 			}
+
 //================================================================Tebogo goes here==========================================================
 				my_screen.drawPlayer(window);
 //==========================================================================================================================================

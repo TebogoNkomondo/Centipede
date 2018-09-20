@@ -5,6 +5,7 @@
 #include "polyCentipede.h"
 #include "player.h"
 #include "bulletContainer.h"
+#include "singleMushroom.h"
 #include <vector>
 
 using namespace std;
@@ -17,28 +18,27 @@ class screen : public BulletContainer
 public:
 	//Inside the constructor, declare the object that will be drawn on the screen
 	screen();
-	
-	//show the splash screen message
-	void draw_Splash_Screen_Message(sf::RenderWindow& my_window);
 	//Pass a sprite to draw on the screen and display what the object is doing
 	void draw_Centipede(int segment_Index, double x_Position, double y_Position, sf::RenderWindow& my_window);
 	
 	void drawPlayer(sf::RenderWindow& window);
 	
+	void drawMushroom(sf::RenderWindow& window);
 	
 	//the vector of sprite centiede segments
 	vector <sf::Sprite> centipede;
+	vector <sf::Sprite> mushroomsOnTheScreen;
 
 private:  //Every that is a member of the screen calss should go here:
 	//centipede Segment sprite
 	sf::Sprite centipedeSegment;
 	sf::Texture centipedeTexture;
-	
-	//splash screen mesage dispay;
-	sf::Text splash_Message;
-	
+	sf::Texture mush_;
+	sf::Sprite mushroom_;
+	int numberOfRandomMushrooms;
 	//Enter key flag
 	bool isEnter;
+	vector <singleMushroom> mushrooms;
 	
 	Player playyer;
 	
