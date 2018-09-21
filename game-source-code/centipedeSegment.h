@@ -28,6 +28,7 @@ private:
 	bool mushroomCollision;
 	bool bottomOfSCreenLeft;
 	bool bottomOfScreenRight;
+	bool mushroomCollisionTurnAndMoveRight;
 };
 
 #endif

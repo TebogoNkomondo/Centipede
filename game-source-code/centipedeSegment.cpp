@@ -10,18 +10,19 @@ centipedeSegment::centipedeSegment(double xCoordinate, double yCoordinate )
     sideBoundary= true;
 	bottomOfSCreenLeft= false;
 	bottomOfScreenRight= false;
+	mushroomCollisionTurnAndMoveRight= false; 
 }
 
 //This will move a centipede once in the fitting direction according to the if statements
 void centipedeSegment::moveCentipedeSegment(bool mushroomCollision)
 {
     
-    if( ( (xPosition <screen_Width) && sideBoundary ) || mushroomCollision || bottomOfScreenRight )
+    if( ( (xPosition <screen_Width) && sideBoundary ) || mushroomCollisionTurnAndMoveRight || bottomOfScreenRight )
         {
-            moveRight(Direction:: Right);
+            moveRight(Direction::Right);
         }
 
-    if( (xPosition > (screen_Width-15) && sideBoundary )|| mushroomCollision)
+    if( (xPosition > (screen_Width-15) && sideBoundary ) || mushroomCollision)
         {
             for(int j=0; j<3; j++)
             {

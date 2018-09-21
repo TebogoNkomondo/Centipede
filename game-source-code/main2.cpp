@@ -15,7 +15,7 @@ int main()
 	//render the winow we are working on
 	sf::RenderWindow window (sf::VideoMode(screen_Width, screen_Height),"The Centipede Game",sf::Style::Default);
 	auto startTheGame= false;
-	window.setFramerateLimit(90);
+	window.setFramerateLimit(35);
 	srand(time(0));
 	
 	//make an object of the screen class to initialize its constructor variables
@@ -54,14 +54,11 @@ int main()
 		if (startTheGame){
 //=================================================================Oratile goes here========================================================
 		my_screen.drawMushroom(window);
-		 for(int i=0; i< length_of_centipede; i++)
+		 for(int i= length_of_centipede-1; i> -1; i--)
             {
+				collided= handleMushroomCollisions.isCollision(polyOne, my_screen, i );
+				my_screen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
                 polyOne.myCentipede2.at(i).moveCentipedeSegment(collided);
-				collided= handleMushroomCollisions.isCollision(polyOne, my_screen,( my_screen.centipede.size()-1)- i );
-				if(collided)
-					cout <<collided<<endl;
-				my_screen.draw_Centipede( (my_screen.centipede.size()-1) - i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
-				
 				//Assume there is a collision at the second segment
 				//bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
 			}
