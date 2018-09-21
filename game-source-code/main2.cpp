@@ -43,15 +43,9 @@ int main()
 				startTheGame = true;
 			}
 		}
-		
-		if(startTheGame==false){
-			SPScreen.drawSplashScreen(window);
-		}
-
 		//If the Enter button has been pressed: Proceed to play the game
 		if (startTheGame){
 //=================================================================Oratile goes here========================================================
-		my_screen.drawMushroom(window);
 		 for(int i= length_of_centipede-1; i> -1; i--)
             {
 				collided= handleMushroomCollisions.isCollision(polyOne, my_screen, i );
@@ -60,7 +54,7 @@ int main()
 				//Assume there is a collision at the second segment
 				//bullet_and_centipede.setcentipedeSegmentScale_zero(my_screen.centipede, my_screen.centipede.size() - 2);
 			}
-
+			my_screen.drawMushroom(window);
 //================================================================Tebogo goes here==========================================================
 				my_screen.drawPlayer(window);
 //==========================================================================================================================================

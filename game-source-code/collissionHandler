@@ -1,0 +1,13 @@
+#ifndef COLLISSIONHANDLER_H
+#define COLLISSIONHANDLER_H
+#include "bulletContainter.h"
+#include "screen.h"
+
+
+class collisionHandler : public bulletContainer, public screen{
+	
+};
+
+
+
+#endif

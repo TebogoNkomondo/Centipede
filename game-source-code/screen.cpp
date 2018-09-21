@@ -28,7 +28,7 @@ screen::screen()
 		cout<<"falied to load mushroom file"<<endl;
 	}
 	mushroom_.setTexture(mush_);
-	mushroom_.setScale(sf::Vector2f(0.14,0.14));
+	mushroom_.setScale(sf::Vector2f(0.2,0.2));
 	
 	for(int i=0; i< numberOfRandomMushrooms; i++)
     {
