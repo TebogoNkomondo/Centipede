@@ -2,7 +2,9 @@
 #include <iostream>
 
 
-BulletContainer::BulletContainer(): isFiring(false){}
+BulletContainer::BulletContainer(){
+	isFiring = false;
+}
 
 BulletContainer::~BulletContainer(){
 	
@@ -40,4 +42,7 @@ void BulletContainer::deleteBullets(){
 	}
 }
 
+std::vector<Laser> BulletContainer::bulletVector(){
+	return bulletLoop;
+}
 

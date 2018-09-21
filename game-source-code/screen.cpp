@@ -69,6 +69,6 @@ void screen::drawPlayer(sf::RenderWindow& window){
 	BulletContainer::handleKey();
 	BulletContainer::DrawBullets(window);
 	BulletContainer::deleteBullets();
-	
+	//auto xx = BulletContainer::bulletVector();
 }
 

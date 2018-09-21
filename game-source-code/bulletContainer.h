@@ -1,6 +1,7 @@
 #ifndef BULLETCONTAINER_H
 #define BULLETCONTAINER_H
 #include "laser.h"
+#include <vector>
 
 class BulletContainer : public Player {
 public:
@@ -11,6 +12,7 @@ public:
 	void addBullet(float x, float y);
 	void DrawBullets(sf::RenderWindow& window);
 	void deleteBullets();
+	std::vector<Laser> bulletVector();
 	
 protected:
 	Laser bullet1;
