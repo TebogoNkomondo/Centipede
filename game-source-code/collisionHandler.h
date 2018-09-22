@@ -4,7 +4,7 @@
 #include "screen.h"
 
 
-class collisionHandler : public BulletContainer, public screen{
+class collisionHandler {
 public:
 	collisionHandler();
 	~collisionHandler();

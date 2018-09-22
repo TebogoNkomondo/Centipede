@@ -72,3 +72,22 @@ void screen::drawPlayer(sf::RenderWindow& window){
 	//auto xx = BulletContainer::bulletVector();
 }
 
+void screen::drawSpider(sf::RenderWindow& window){
+	spider1.drawSpider(window);
+	auto rightMovemnt = spider1.moveSpiderRight();
+	auto ifLeft_ = get<0>(rightMovemnt);
+
+	auto horizontalDirection = 0;
+	horizontalDirection  = get<1>(rightMovemnt);
+	
+	if(ifLeft_ == true){
+		auto leftMovement = spider1.moveSpiderLeft();
+		horizontalDirection = get<1>(leftMovement);
+	}
+				
+	auto upMovement= spider1.moveSpiderUp(horizontalDirection);
+	
+	if(upMovement == true){
+		spider1.moveSpiderDown(horizontalDirection);
+	}
+}

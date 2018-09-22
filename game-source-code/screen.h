@@ -7,6 +7,8 @@
 #include "bulletContainer.h"
 #include "singleMushroom.h"
 #include <vector>
+#include "spider.h"
+#include <tuple>
 
 using namespace std;
 
@@ -30,6 +32,8 @@ public:
 	//the vector of sprite centiede segments
 	vector <sf::Sprite> centipede;
 	vector <sf::Sprite> mushroomsOnTheScreen;
+	
+	void drawSpider(sf::RenderWindow& window);
 
 private:  //Every that is a member of the screen calss should go here:
 	//centipede Segment sprite
@@ -43,6 +47,7 @@ private:  //Every that is a member of the screen calss should go here:
 	vector <singleMushroom> mushrooms;
 	
 	Player playyer;
+	Spider spider1;
 	
 };
 
