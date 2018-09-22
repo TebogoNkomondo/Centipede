@@ -16,10 +16,13 @@ public:
 	tuple<bool, int> moveSpiderLeft();
 	
 	void setSpiderPosition();
+	void deleteSpider();
 	
-private:
+protected:
 	sf::Texture texture_;
 	sf::Sprite spider_;
+private:
+
 	int windowWidth = 800;
 	int windowHeight = 600;
 		bool isUpBound = false;

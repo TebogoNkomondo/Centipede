@@ -68,3 +68,7 @@ bool Spider::moveSpiderDown(int xMovement){
 	}
 	return isLowBound;
 }
+
+void Spider::deleteSpider(){
+	spider_.setScale(0,0);
+}

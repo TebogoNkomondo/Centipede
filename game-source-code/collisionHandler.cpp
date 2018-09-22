@@ -1,7 +1,11 @@
 #include "collisionHandler.h"
+using namespace std;
 
 collisionHandler::collisionHandler(){
 	a = 0;
+	for(size_t i =0;bulletLoop.size();i++){
+		bulletVec_.push_back(bulletLoop.at(i));	
+	}
 }
 
 collisionHandler::~collisionHandler(){
@@ -23,3 +27,17 @@ collisionHandler::~collisionHandler(){
 void collisionHandler::deleteM(){
 	mushroom_.setScale(0,0);
 }*/
+
+void collisionHandler::bulletSpider(sf::RenderWindow& window){
+	//auto kk = bulletVector(i);
+	for(size_t i= 0;bulletLoop.size();i++){
+		if( bulletLoop.at(i).getBullet().getGlobalBounds() == spider_.getGlobalBounds()){
+			spider_.setScale(0,0);
+			//bulletLoop[i].getBullet().getGlobalBounds();
+			//Spider::deleteSpider();
+			window.draw(spider_);
+		}
+	}
+	
+	
+}

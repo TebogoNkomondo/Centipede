@@ -42,7 +42,7 @@ void BulletContainer::deleteBullets(){
 	}
 }
 
-std::vector<Laser> BulletContainer::bulletVector(){
-	return bulletLoop;
+Laser BulletContainer::bulletVector(int i){
+	return bulletLoop.at(i);
 }
 

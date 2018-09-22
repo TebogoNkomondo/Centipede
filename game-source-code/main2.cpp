@@ -8,6 +8,7 @@
 #include "splashScreen.h"
 #include <ctime>
 #include <cstdlib>
+#include "collisionHandler.h"
 using namespace std;
 
 int main()
@@ -29,6 +30,7 @@ int main()
 	
 	//===================================================================Tebogos's member variable=====================================================
 	SplashScreen SPScreen;
+	collisionHandler coll;
 //===========================================================================================================================================
 	while(window.isOpen())
     {
@@ -58,6 +60,7 @@ int main()
 //================================================================Tebogo goes here==========================================================
 				my_screen.drawPlayer(window);
 				my_screen.drawSpider(window);
+				coll.bulletSpider(window);
 //==========================================================================================================================================
 			
 			window.display();

@@ -12,7 +12,7 @@ public:
 	void addBullet(float x, float y);
 	void DrawBullets(sf::RenderWindow& window);
 	void deleteBullets();
-	std::vector<Laser> bulletVector();
+	Laser bulletVector(int i);
 	
 protected:
 	Laser bullet1;
