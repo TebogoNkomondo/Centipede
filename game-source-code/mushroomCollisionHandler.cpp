@@ -29,7 +29,6 @@ bool mushroomCollisionHandler::isCollision (polyCentipede& centipedeTrain, scree
 					if( (centipedeY+ k == mushY) || (centipedeY-k == mushY) )
 					{
 						collision= true;
-						cout<< centipedeX <<"	"<<centipedeY<<endl;
 						return collision;
 					}
 					

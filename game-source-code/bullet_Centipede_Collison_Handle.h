@@ -11,15 +11,16 @@ public:
 	bulletCentipeteCollision();
 	//Basic:functionality- the centipede segment that collided wit the bullet dissapers from the screen
 	//centipede continues to move its projected direction
-	void setcentipedeSegmentScale_zero(vector <sf::Sprite>& centipede, int index);
+	void setcentipedeSegmentScale_zero( vector <sf::Sprite>& centipede);
 	//Run condition to test if a collision is met
-	bool isCollisionMet();
+	bool isCollisionMet(vector <sf::Sprite>& centipedeTrain, std::vector<Laser>& bulletLoop);
 	//get the index of where the collison occured;
 	int getCollisonIndex();
 	
 private:
 	bool isCollison;
-	int collisionIndex;
+	int centipedeCollisionIndex;
+	screen my_screen;
 
 };
 

@@ -18,9 +18,7 @@ void singleMushroom::setSingleMushroomPosition()
 	
 	do{
 		yCoordinate= rand()%550 +30;
-	}while(yCoordinate %5 !=0);
-	
-	cout<<xCoordinate<< " "<<yCoordinate<<endl;
+	}while(yCoordinate %5 !=0 || yCoordinate> 500);
 }
 
 int singleMushroom::getX_position()
