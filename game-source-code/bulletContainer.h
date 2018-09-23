@@ -13,10 +13,13 @@ public:
 	void DrawBullets(sf::RenderWindow& window);
 	void deleteBullets();
 	Laser bulletVector(int i);
-	std::vector<Laser>bulletLoop;
+	void deleteCollidedBullets(int i);
+	
+	std::vector<Laser> getBulletVector();
 	
 protected:
 	Laser bullet1;
+	std::vector<Laser>bulletLoop;
 	std::vector<Laser>::const_iterator iter;
 	bool isFiring;
 	Player player1;

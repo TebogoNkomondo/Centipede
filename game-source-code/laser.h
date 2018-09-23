@@ -13,6 +13,7 @@ public:
 	void DrawBullet(sf::RenderWindow &window);
 	void Shoot();
 	void setPosition(float x, float y);
+	void deleteLaser();
 	sf::Sprite getBullet();
 
 private: 

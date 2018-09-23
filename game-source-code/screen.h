@@ -9,6 +9,7 @@
 #include <vector>
 #include "spider.h"
 #include <tuple>
+#include "collisionHandler.h"
 
 using namespace std;
 
@@ -34,6 +35,7 @@ public:
 	vector <sf::Sprite> mushroomsOnTheScreen;
 	
 	void drawSpider(sf::RenderWindow& window);
+	void collisions();
 
 private:  //Every that is a member of the screen calss should go here:
 	//centipede Segment sprite
@@ -48,6 +50,9 @@ private:  //Every that is a member of the screen calss should go here:
 	
 	Player playyer;
 	Spider spider1;
+	BulletContainer bulletVectorr;
+	
+	collisionHandler spiderBullet1;
 	
 };
 

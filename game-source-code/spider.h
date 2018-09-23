@@ -18,6 +18,8 @@ public:
 	void setSpiderPosition();
 	void deleteSpider();
 	
+	sf::Sprite getSpider();
+	
 protected:
 	sf::Texture texture_;
 	sf::Sprite spider_;

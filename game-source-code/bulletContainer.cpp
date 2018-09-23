@@ -11,14 +11,19 @@ BulletContainer::~BulletContainer(){
 }
 
 void BulletContainer::shootKey(){
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)){
+/*	int shootTimer =0;
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && shootTimer<5){
+		shootTimer++;
+	}*/
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) ){
 		isFiring = true; 
+		//shootTimer=0;
 	}
 }
 
 void BulletContainer::addBullet(float x, float y){
 	auto bulletPositionAdjuctFactor(13);
-	if(isFiring == true){
+	if(isFiring == true && bulletLoop.size()<15){
 		bullet1.setPosition(x+bulletPositionAdjuctFactor,y);
 		bulletLoop.push_back(bullet1);
 		isFiring = false;
@@ -46,3 +51,10 @@ Laser BulletContainer::bulletVector(int i){
 	return bulletLoop.at(i);
 }
 
+std::vector<Laser> BulletContainer::getBulletVector(){
+	return bulletLoop;
+}
+
+void BulletContainer::deleteCollidedBullets(int i){
+	bulletLoop.at(i).deleteLaser();
+}

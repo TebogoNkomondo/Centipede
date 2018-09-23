@@ -91,3 +91,12 @@ void screen::drawSpider(sf::RenderWindow& window){
 		spider1.moveSpiderDown(horizontalDirection);
 	}
 }
+
+void screen::collisions(){
+	spiderBullet1.bulletSpider(spider1,bulletVectorr);
+	
+
+/*	if(spider1.getSpider().getGlobalBounds().intersects(playyer.GetPlayer().getGlobalBounds())){
+		spider1.deleteSpider();
+	}*/
+}

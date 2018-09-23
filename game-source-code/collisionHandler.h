@@ -1,24 +1,23 @@
 #ifndef COLLISSIONHANDLER_H
 #define COLLISSIONHANDLER_H
 #include "bulletContainer.h"
-#include "screen.h"
+#include "spider.h"
 #include "laser.h"
 //#include <vector>
 
 
-class collisionHandler: public BulletContainer, public Spider, public Laser {
+class collisionHandler {
 public:
 	collisionHandler();
 	~collisionHandler();
 	
 	void bulletMushroom();
-	void bulletSpider(sf::RenderWindow& window);
+	
+	void bulletSpider(Spider& spider1, BulletContainer& bulletStorage);
 	
 	void deleteM();
 private:
-	int a;
 	vector<Laser> bulletVec_;
-	Laser oneTh;
 };
 
 #endif

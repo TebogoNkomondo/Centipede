@@ -72,3 +72,7 @@ bool Spider::moveSpiderDown(int xMovement){
 void Spider::deleteSpider(){
 	spider_.setScale(0,0);
 }
+
+sf::Sprite Spider::getSpider(){
+	return spider_;
+}
