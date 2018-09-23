@@ -61,16 +61,21 @@ void screen::drawMushroom(sf::RenderWindow& my_window)
 
 void screen::drawPlayer(sf::RenderWindow& window){
 	playyer.handleKey();
-	auto x = BulletContainer::getXPos();
-	auto y = BulletContainer::getYPos();
+	auto x = bulletVectorr.getXPos();
+	auto y = bulletVectorr.getYPos();
 	playyer.Draw(window);
-	BulletContainer::shootKey();
+/*	BulletContainer::shootKey();
 	BulletContainer::addBullet(x,y);
 	BulletContainer::handleKey();
 	BulletContainer::DrawBullets(window);
-	BulletContainer::deleteBullets();
-	//auto xx = BulletContainer::bulletVector();
+	BulletContainer::deleteBullets();*/
+	bulletVectorr.shootKey();
+	bulletVectorr.addBullet(x,y);
+	bulletVectorr.handleKey();
+	bulletVectorr.DrawBullets(window);
+	bulletVectorr.deleteBullets();
 }
+
 
 void screen::drawSpider(sf::RenderWindow& window){
 	spider1.drawSpider(window);
