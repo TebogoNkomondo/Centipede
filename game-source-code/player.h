@@ -24,6 +24,7 @@ public:
 	float getYPos();
 	sf::Sprite GetPlayer();
 	void setPosition(sf::Vector2f newPos);
+	void deletePlayer();
 	
 protected:
 	sf::Texture real_;

@@ -92,3 +92,7 @@ float Player::getXPos(){
 float Player::getYPos(){
 	return yPosition;
 }
+
+void Player::deletePlayer(){
+	player_.setScale(0,0);
+}

@@ -35,7 +35,7 @@ public:
 	vector <sf::Sprite> mushroomsOnTheScreen;
 	
 	void drawSpider(sf::RenderWindow& window);
-	void collisions();
+	bool collisions();
 
 private:  //Every that is a member of the screen calss should go here:
 	//centipede Segment sprite
@@ -53,7 +53,10 @@ private:  //Every that is a member of the screen calss should go here:
 	BulletContainer bulletVectorr;
 	
 	collisionHandler spiderBullet1;
-	
+	//CentipedeTrain myCentipedeTrain;
+	bool mushCol =false;
+	bool isDead = false;
+
 };
 
 #endif

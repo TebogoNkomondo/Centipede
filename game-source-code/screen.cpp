@@ -64,11 +64,6 @@ void screen::drawPlayer(sf::RenderWindow& window){
 	auto x = bulletVectorr.getXPos();
 	auto y = bulletVectorr.getYPos();
 	playyer.Draw(window);
-/*	BulletContainer::shootKey();
-	BulletContainer::addBullet(x,y);
-	BulletContainer::handleKey();
-	BulletContainer::DrawBullets(window);
-	BulletContainer::deleteBullets();*/
 	bulletVectorr.shootKey();
 	bulletVectorr.addBullet(x,y);
 	bulletVectorr.handleKey();
@@ -97,11 +92,10 @@ void screen::drawSpider(sf::RenderWindow& window){
 	}
 }
 
-void screen::collisions(){
+bool screen::collisions(){
 	spiderBullet1.bulletSpider(spider1,bulletVectorr);
+	isDead = spiderBullet1.playerSpider(spider1, playyer);
+	//isDead = spiderBullet1.centipedePlayer(playyer,myCentipedeTrain);
+	return isDead;
 	
-
-/*	if(spider1.getSpider().getGlobalBounds().intersects(playyer.GetPlayer().getGlobalBounds())){
-		spider1.deleteSpider();
-	}*/
 }

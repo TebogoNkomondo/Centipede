@@ -23,3 +23,9 @@ SplashScreen::~SplashScreen(){
 void SplashScreen::drawSplashScreen(sf::RenderWindow& window){
 	window.draw(splashMessage);
 }
+
+void SplashScreen::deadStatus(sf::RenderWindow& window){
+	splashMessage.setString("YOU'VE LOST");
+	splashMessage.setPosition(250,250);
+	window.draw(splashMessage);
+}

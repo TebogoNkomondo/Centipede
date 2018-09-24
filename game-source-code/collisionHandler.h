@@ -3,10 +3,12 @@
 #include "bulletContainer.h"
 #include "spider.h"
 #include "laser.h"
-//#include <vector>
+//#include "centipedeTrain.h"
+#include "player.h"
 
 
-class collisionHandler {
+
+class collisionHandler  {
 public:
 	collisionHandler();
 	~collisionHandler();
@@ -15,8 +17,11 @@ public:
 	
 	void bulletSpider(Spider& spider1, BulletContainer& bulletStorage);
 	
-	void deleteM();
+	bool playerSpider(Spider& spider1, Player& player1);
+	
+	//bool centipedePlayer(Player& player1, CentipedeTrain& centipede1);
 private:
+	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
 };
 
