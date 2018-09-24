@@ -76,3 +76,7 @@ void Spider::deleteSpider(){
 sf::Sprite Spider::getSpider(){
 	return spider_;
 }
+
+void Spider::setSpiderPosition(float x, float y){
+	spider_.setPosition(x,y);
+}

@@ -3,6 +3,8 @@
 #include "../game-source-code/player.h"
 #include "../game-source-code/centipede.h"
 #include "../game-source-code/screen.h"
+#include "../game-source-code/laser.h"
+#include "../game-source-code/spider.h"
 using namespace std;
 using namespace sf;
 
@@ -61,17 +63,67 @@ TEST_CASE("Check for down movement of player")
     CHECK(player2.GetPlayer().getPosition().y == 570);
 }
 
-/*TEST_CASE("Check for down movement of player")
-{
-	Player player2;
-	player2.setPosition(sf::Vector2f(780,565));
-	player2.MoveRight();
-    CHECK(player2.GetPlayer().getPosition().x == 570);
-}*/
+//TESTS FOR LASER
+TEST_CASE("Check x scale of laser"){
+	Laser laser1;
+	CHECK(laser1.getBullet().getScale().x== 0.2f);
+}
+
+TEST_CASE("Check y scale of laser"){
+	Laser laser2;
+	CHECK(laser2.getBullet().getScale().y== 0.2f);
+}
+
+TEST_CASE("Check laser movement up"){
+	Laser laser1;
+	laser1.setPosition(300,300);
+	laser1.Shoot();
+	CHECK(laser1.getBullet().getPosition().y == 290);
+}
+
+
+//TESTS FOR SPIDER
+TEST_CASE("Check x scale of SPIDER"){
+	Spider spider1;
+	CHECK(spider1.getSpider().getScale().x== 0.12f);  		//bullet only moves up
+}
+
+TEST_CASE("Check y scale of SPIDER"){
+	Spider spider2;
+	CHECK(spider2.getSpider().getScale().y== 0.07f);
+}
+
+TEST_CASE("Check SPIDER movement up"){
+	Spider spider3;
+	spider3.setSpiderPosition(300,570);
+	spider3.moveSpiderUp(0);
+	CHECK(spider3.getSpider().getPosition().y == 568);
+}
+
+TEST_CASE("Check SPIDER movement up"){
+	Spider spider4;
+	spider4.setSpiderPosition(300,570);
+	spider4.moveSpiderDown(0);
+	CHECK(spider4.getSpider().getPosition().y == 572);
+}
+
+TEST_CASE("Check spider movement to the right"){
+	Spider spider5;
+	spider5.setSpiderPosition(300,570);
+	spider5.moveSpiderDown(2);			///we have to test using the down function
+	CHECK(spider5.getSpider().getPosition().x == 302);
+}
+
+TEST_CASE("Check spider movement to the left"){
+	Spider spider6;
+	spider6.setSpiderPosition(300,570);
+	spider6.moveSpiderDown(-2);			///we have to test using the down function
+	CHECK(spider6.getSpider().getPosition().x == 298);
+}
 
 
 //============================================================Poly Centipede Tests=========================================================
-
+/*
 TEST_CASE("Check that a centipede segment moves to the right by the moveSpeed (5) ")
 {
 //    //Check that the centipede succesfully moves to the right
@@ -138,4 +190,4 @@ TEST_CASE("Check a centipede segment's position never exceeds the screen width")
 //TEST_CASE ("Check that a centipede seperates after coming into contact with a bullet")
 
 
-//TEST_CASE ("Check that a centipede changes direction after colliding with a mushroom")
+//TEST_CASE ("Check that a centipede changes direction after colliding with a mushroom")*/

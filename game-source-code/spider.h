@@ -15,7 +15,7 @@ public:
 	tuple<bool, int> moveSpiderRight();
 	tuple<bool, int> moveSpiderLeft();
 	
-	void setSpiderPosition();
+	void setSpiderPosition(float x, float y);
 	void deleteSpider();
 	
 	sf::Sprite getSpider();
