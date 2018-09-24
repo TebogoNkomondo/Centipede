@@ -5,6 +5,7 @@
 #include "../game-source-code/screen.h"
 #include "../game-source-code/laser.h"
 #include "../game-source-code/spider.h"
+#include "../game-source-code/polycentipede.h"
 using namespace std;
 using namespace sf;
 
@@ -123,17 +124,40 @@ TEST_CASE("Check spider movement to the left"){
 
 
 //============================================================Poly Centipede Tests=========================================================
-/*
+
 TEST_CASE("Check that a centipede segment moves to the right by the moveSpeed (5) ")
 {
 //    //Check that the centipede succesfully moves to the right
 //    //Check this for only one segment of the centipede.
 //    
-	polyCentipede centipedeTrain(1);
-    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
-    CHECK(centipedeTrain.myCentipede2.at(0).get_xCoordinate() == 5);
+	centipedeSegment centipede1(0,0);
+	centipede1.moveCentipedeSegment(false);
+	//polyCentipede centipedeTrain(1);
+    //centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
+    CHECK(centipede1.get_xCoordinate() == 5);
 }
 
+TEST_CASE("Check that a centipede segment moves to the down by the moveSpeed (5) ")
+{
+//    //Check that the centipede succesfully moves to the down
+//    //Check this for only one segment of the centipede.
+//    
+	centipedeSegment centipede1(756,0);
+	centipede1.moveCentipedeSegment(true);
+    CHECK(centipede1.get_yCoordinate() == 15);
+}
+
+TEST_CASE("Check that a centipede segment moves to the left by the moveSpeed (5) ")
+{
+//    //Check that the centipede succesfully moves to the down
+//    //Check this for only one segment of the centipede.
+//    
+	centipedeSegment centipede1(800,0);
+	centipede1.moveCentipedeSegment(false);
+    CHECK(centipede1.get_xCoordinate() == 795);
+}
+
+/*
 TEST_CASE("Check that a centipede segment moves to the down by the moveSpeed (5)* 3")
 {
     //Check that the centipede succesfully moves down
@@ -191,3 +215,4 @@ TEST_CASE("Check a centipede segment's position never exceeds the screen width")
 
 
 //TEST_CASE ("Check that a centipede changes direction after colliding with a mushroom")*/
+
