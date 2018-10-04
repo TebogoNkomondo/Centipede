@@ -21,40 +21,40 @@ void BulletContainer::shootKey(){
 	}
 }
 
-void BulletContainer::addBullet(float x, float y){
+void BulletContainer::addBullet(float x, float y,std::vector<Laser>& bulletL){
 	auto bulletPositionAdjuctFactor(13);
-	if(isFiring == true && bulletLoop.size()<15){
+	if(isFiring == true){
 		bullet1.setPosition(x+bulletPositionAdjuctFactor,y);
-		bulletLoop.push_back(bullet1);
+		bulletL.push_back(bullet1);
 		isFiring = false;
 	}
 }
 
-void BulletContainer::DrawBullets(sf::RenderWindow& window){
-	for(int i=0,kk=bulletLoop.size();i<kk;i++){
-		bulletLoop[i].Shoot();
-		bulletLoop[i].DrawBullet(window);
+void BulletContainer::DrawBullets(sf::RenderWindow& window, std::vector<Laser>& bulletL){
+	for(int i=0,kk=bulletL.size();i<kk;i++){
+		bulletL[i].Shoot();
+		bulletL[i].DrawBullet(window);
 	}
 }
 
-void BulletContainer::deleteBullets(){
+void BulletContainer::deleteBullets(std::vector<Laser>& bulletL){
 	int counter=0;
-	for(iter=bulletLoop.begin();iter<bulletLoop.end();iter++){
-		if(bulletLoop[counter].getBullet().getPosition().y<0){
-			bulletLoop.erase(iter);
+	for(iter=bulletL.begin();iter<bulletL.end();iter++){
+		if(bulletL[counter].getBullet().getPosition().y<0){
+			bulletL.erase(iter);
 		}
 	counter++;
 	}
 }
 
-Laser BulletContainer::bulletVector(int i){
-	return bulletLoop.at(i);
+Laser BulletContainer::bulletVector(int i, std::vector<Laser>& bulletL){
+	return bulletL.at(i);
 }
 
 std::vector<Laser> BulletContainer::getBulletVector(){
 	return bulletLoop;
 }
 
-void BulletContainer::deleteCollidedBullets(int i){
-	bulletLoop.at(i).deleteLaser();
+void BulletContainer::deleteCollidedBullets(int i, std::vector<Laser>& bulletL){
+	bulletL.at(i).deleteLaser();
 }

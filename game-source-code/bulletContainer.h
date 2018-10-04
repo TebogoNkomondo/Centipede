@@ -9,11 +9,11 @@ public:
 	~BulletContainer();
 	
 	void shootKey();
-	void addBullet(float x, float y);
-	void DrawBullets(sf::RenderWindow& window);
-	void deleteBullets();
-	Laser bulletVector(int i);
-	void deleteCollidedBullets(int i);
+	void addBullet(float x, float y, std::vector<Laser>& bulletL);
+	void DrawBullets(sf::RenderWindow& window, std::vector<Laser>& bulletL);
+	void deleteBullets(std::vector<Laser>& bulletL);
+	Laser bulletVector(int i, std::vector<Laser>& bulletL);
+	void deleteCollidedBullets(int i, std::vector<Laser>& bulletL);
 	
 	std::vector<Laser> getBulletVector();
 	
