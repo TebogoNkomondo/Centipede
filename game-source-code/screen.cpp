@@ -63,12 +63,16 @@ void screen::drawPlayer(sf::RenderWindow& window){
 	playyer.handleKey();
 	auto x = bulletVectorr.getXPos();
 	auto y = bulletVectorr.getYPos();
+	
 	playyer.Draw(window);
 	bulletVectorr.shootKey();
-	bulletVectorr.addBullet(x,y);
+	bulletVectorr.addBullet(x,y, bulletLoop1);
 	bulletVectorr.handleKey();
-	bulletVectorr.DrawBullets(window);
-	bulletVectorr.deleteBullets();
+	bulletVectorr.DrawBullets(window, bulletLoop1);
+	if(bulletLoop1.size() > 2){
+		bulletVectorr.deleteBullets(bulletLoop1);
+	}
+	//cout<< "size"<< bulletLoop1.size()<<endl;
 }
 
 
@@ -93,9 +97,33 @@ void screen::drawSpider(sf::RenderWindow& window){
 }
 
 bool screen::collisions(){
-	spiderBullet1.bulletSpider(spider1,bulletVectorr);
+	bool isAl = false;
+	int k=0;
+	auto kk = spiderBullet1.bulletSpider(spider1,bulletLoop1);
+	
+	isAl = get<0>(kk);
+	if(isAl == true){
+		k = get<1>(kk);
+		bulletLoop1.at(k).deleteLaser();
+	}
 	isDead = spiderBullet1.playerSpider(spider1, playyer);
-	//isDead = spiderBullet1.centipedePlayer(playyer,myCentipedeTrain);
+	
+	spiderBullet1.bulletCentipede(bulletLoop1,centipede);
+
+	
 	return isDead;
 	
 }
+
+/*void screen::bulletCentipede1(){
+	for(size_t i=0;i<bulletLoop1.size();i++){
+		for(size_t t=0;t<centipede.size();t++){
+			sf::FloatRect col1 = bulletLoop1.at(i).getBullet().getGlobalBounds();
+			sf::FloatRect col2 = centipede.at(t).getGlobalBounds();
+			if(col1.intersects(col2)){
+				centipede.at(t).setScale(0,0);
+				bulletLoop1.at(i).deleteLaser();
+			}
+		}
+	}
+}*/

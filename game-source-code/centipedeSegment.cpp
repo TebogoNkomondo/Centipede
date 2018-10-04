@@ -2,6 +2,13 @@
 
 centipedeSegment::centipedeSegment(double xCoordinate, double yCoordinate )
 {
+	//polyCentipede polyOne(length_of_centipede);
+/*	for(int i=0; i<length_of_centipede; i++)
+    {
+        centipede.push_back(centipedeSegment);
+        centipede.at(i).setPosition(polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate() );
+    }	*/
+	//======================================================================
     //set the initial cordinates of a centipede segment.
     xPosition = xCoordinate;
     yPosition = yCoordinate;

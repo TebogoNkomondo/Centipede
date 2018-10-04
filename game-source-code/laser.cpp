@@ -39,5 +39,6 @@ sf::Sprite Laser::getBullet(){
 
 void Laser::deleteLaser(){
 	bullet_.setScale(0,0);
+	//bullet_.setPosition(100,-2);
 }
 

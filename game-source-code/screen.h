@@ -10,6 +10,7 @@
 #include "spider.h"
 #include <tuple>
 #include "collisionHandler.h"
+//#include "mushroomCollisionHandler.h"
 
 using namespace std;
 
@@ -36,6 +37,10 @@ public:
 	
 	void drawSpider(sf::RenderWindow& window);
 	bool collisions();
+	void bulletCentipede1();
+	
+	//=================================================================
+	void handleMushroomCollisions(); 
 
 private:  //Every that is a member of the screen calss should go here:
 	//centipede Segment sprite
@@ -51,11 +56,17 @@ private:  //Every that is a member of the screen calss should go here:
 	Player playyer;
 	Spider spider1;
 	BulletContainer bulletVectorr;
+	//BulletContainer bulletT(std::vector<Laser> b);
 	
 	collisionHandler spiderBullet1;
 	//CentipedeTrain myCentipedeTrain;
 	bool mushCol =false;
 	bool isDead = false;
+	Laser bullet1;
+	std::vector<Laser>bulletLoop1;
+	
+	//================================================================================
+	//mushroomCollisionHandler handleMushroomCollisions;
 
 };
 

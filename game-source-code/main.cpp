@@ -62,11 +62,14 @@ int main()
 //				}
 			}
 			
+			
+			
 			my_screen.drawMushroom(window);
 //================================================================Tebogo goes here==========================================================
 				my_screen.drawPlayer(window);
 				my_screen.drawSpider(window);
 				healthStatus = my_screen.collisions();
+				//my_screen.bulletCentipede1();
 				//my_screen.drawCentipede1(window);
 		
 		if(healthStatus == true){

@@ -5,6 +5,7 @@
 #include <iostream>
 #define screen_Width 800
 #define screen_Height 600
+#include <SFML/Graphics.hpp>
 
 
 //A centipede segment is a movable object so inherit from movableObject class
@@ -29,6 +30,9 @@ private:
 	bool bottomOfSCreenLeft;
 	bool bottomOfScreenRight;
 	bool mushroomCollisionTurnAndMoveRight;
+	
+	sf::Sprite centipedeSegment1;
+	sf::Texture centipedeTexture1;
 };
 
 #endif
