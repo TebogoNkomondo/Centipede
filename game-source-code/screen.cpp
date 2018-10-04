@@ -96,7 +96,7 @@ void screen::drawSpider(sf::RenderWindow& window){
 	}
 }
 
-bool screen::collisions(){
+tuple<bool,bool> screen::collisions(){
 	bool isAl = false;
 	int k=0;
 	auto kk = spiderBullet1.bulletSpider(spider1,bulletLoop1);
@@ -108,10 +108,16 @@ bool screen::collisions(){
 	}
 	isDead = spiderBullet1.playerSpider(spider1, playyer);
 	
-	spiderBullet1.bulletCentipede(bulletLoop1,centipede);
-
+	int numberOfCentipedeLeft = 14;
+	numberOfCentipedeLeft = spiderBullet1.bulletCentipede(bulletLoop1,centipede);
 	
-	return isDead;
+	cout << numberOfCentipedeLeft<<endl;
+	
+	if(numberOfCentipedeLeft == 0){
+		centipedeArrayEmpty = true;
+	}
+	
+	return {isDead, centipedeArrayEmpty};
 	
 }
 

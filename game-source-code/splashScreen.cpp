@@ -29,3 +29,9 @@ void SplashScreen::deadStatus(sf::RenderWindow& window){
 	splashMessage.setPosition(250,250);
 	window.draw(splashMessage);
 }
+
+void SplashScreen::winStatus(sf::RenderWindow& window){
+	splashMessage.setString("YOU'VE WON");
+	splashMessage.setPosition(250,250);
+	window.draw(splashMessage);
+}

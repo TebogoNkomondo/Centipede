@@ -22,9 +22,8 @@ tuple<bool, int> collisionHandler::bulletSpider(Spider& spider1, std::vector<Las
 			bulletStorage.erase(i);
 			return {isBullet, ii};
 		}
-		return {false, 0};
-		//isBullet = false;
 	}
+	return {false, 0};
 }
 
 bool collisionHandler::playerSpider(Spider& spider1, Player& player1){
@@ -36,17 +35,20 @@ bool collisionHandler::playerSpider(Spider& spider1, Player& player1){
 	return isPlayerDead;
 }
 
-void collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage){
+int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage){
+	
 	for(size_t i=0;i<bulletStorage1.size();i++){
 		for(size_t t=0;t<centipedeStorage.size();t++){
-			sf::FloatRect col1 = bulletStorage1.at(i).getBullet().getGlobalBounds();
-			sf::FloatRect col2 = centipedeStorage.at(t).getGlobalBounds();
-			if(col1.intersects(col2)){
+			sf::FloatRect collidingObject1 = bulletStorage1.at(i).getBullet().getGlobalBounds();
+			sf::FloatRect collidingObject2 = centipedeStorage.at(t).getGlobalBounds();
+			if(collidingObject1.intersects(collidingObject2)){
 				centipedeStorage.at(t).setScale(0,0);
 				bulletStorage1.at(i).deleteLaser();
+				centipedesLeft-=1;
 			}
 		}
 	}
+	return centipedesLeft;
 }
 /*bool collisionHandler::centipedePlayer(Player& player1, CentipedeTrain& centipede1){
 	for(auto i = centipede1.getCentipedeVector().begin();i<centipede1.getCentipedeVector().end();i++){

@@ -36,7 +36,7 @@ public:
 	vector <sf::Sprite> mushroomsOnTheScreen;
 	
 	void drawSpider(sf::RenderWindow& window);
-	bool collisions();
+	tuple<bool,bool> collisions();
 	void bulletCentipede1();
 	
 	//=================================================================
@@ -67,6 +67,7 @@ private:  //Every that is a member of the screen calss should go here:
 	
 	//================================================================================
 	//mushroomCollisionHandler handleMushroomCollisions;
+	bool centipedeArrayEmpty = false;
 
 };
 

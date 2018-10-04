@@ -31,7 +31,6 @@ int main()
 	
 	//===================================================================Tebogos's member variable=====================================================
 	SplashScreen SPScreen;
-	bool healthStatus = false;
 //===========================================================================================================================================
 	while(window.isOpen())
     {
@@ -66,15 +65,21 @@ int main()
 			
 			my_screen.drawMushroom(window);
 //================================================================Tebogo goes here==========================================================
+				
 				my_screen.drawPlayer(window);
 				my_screen.drawSpider(window);
-				healthStatus = my_screen.collisions();
-				//my_screen.bulletCentipede1();
-				//my_screen.drawCentipede1(window);
+				auto healthStatus = my_screen.collisions();
+				
+				auto isSpiderPlayerColission = get<0>(healthStatus);
+				auto isCentipedeContainerEmpty = get<1>(healthStatus);
 		
-		if(healthStatus == true){
+		if(isSpiderPlayerColission == true){
 			window.clear();
 			SPScreen.deadStatus(window);
+		}
+		if(isCentipedeContainerEmpty == true){
+			window.clear();
+			SPScreen.winStatus(window);
 		}
 //==========================================================================================================================================
 			

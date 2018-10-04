@@ -19,10 +19,11 @@ public:
 	
 	bool playerSpider(Spider& spider1, Player& player1);
 	
-	void bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage);
+	int bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage);
 private:
 	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
+	int centipedesLeft =12;
 };
 
 #endif
