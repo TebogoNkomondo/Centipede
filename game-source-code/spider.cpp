@@ -80,3 +80,13 @@ sf::Sprite Spider::getSpider(){
 void Spider::setSpiderPosition(float x, float y){
 	spider_.setPosition(x,y);
 }
+
+void Spider::generateSpider(){
+	if(period<500){
+		period++;
+	}
+	else{
+		spider_.setScale(sf::Vector2f(0.12,0.07));
+		period =0;
+	}
+}

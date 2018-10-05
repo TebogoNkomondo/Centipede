@@ -17,7 +17,7 @@ public:
 	
 	void setSpiderPosition(float x, float y);
 	void deleteSpider();
-	
+	void generateSpider();
 	sf::Sprite getSpider();
 	
 protected:
@@ -32,7 +32,7 @@ private:
 	bool isLeftBound = false;
 	bool isRightBound = false;
 	int xDirection;
-	
+	int period = 0;
 };
 
 
