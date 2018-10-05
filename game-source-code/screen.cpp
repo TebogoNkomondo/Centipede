@@ -99,23 +99,30 @@ void screen::drawSpider(sf::RenderWindow& window){
 }
 
 tuple<bool,bool> screen::collisions(sf::RenderWindow& my_window){
-	bool isAl = false;
-	int k=0;
-	auto kk = spiderBullet1.bulletSpider(spider1,bulletLoop1);
+	bool isbulletSpiderCollission = false;
+	int bulletLocation=0;
+	auto bulletLifeStatus = spiderBullet1.bulletSpider(spider1,bulletLoop1);
 	
-	isAl = get<0>(kk);
-	if(isAl == true){
-		k = get<1>(kk);
-		bulletLoop1.at(k).deleteLaser();
+	isbulletSpiderCollission = get<0>(bulletLifeStatus);
+	if(isbulletSpiderCollission == true){
+		bulletLocation = get<1>(bulletLifeStatus);
+		bulletLoop1.at(bulletLocation).deleteLaser();
 	}
 	isDead = spiderBullet1.playerSpider(spider1, playyer);
 	
-	auto numberOfCentipedeLeft = spiderBullet1.bulletCentipede(bulletLoop1,centipede );
+	int numberOfCentipedeLeft = 12;
+	numberOfCentipedeLeft = spiderBullet1.bulletCentipede(bulletLoop1,centipede);
 	
 	if(numberOfCentipedeLeft == 0){
 		centipedeArrayEmpty = true;
 	}
 	
+	if(isDead == false){
+		isDead = spiderBullet1.playerCentipede(playyer, centipede);
+	}
+	return {isDead, centipedeArrayEmpty};
+	
+		//==================================================================
 	if (spiderBullet1.getShotCentipedeIndex() > -1)
 	{
 		auto mushSize=mushroomsOnTheScreen.size();
