@@ -57,6 +57,7 @@ void screen::drawMushroom(sf::RenderWindow& my_window)
 	{
 		my_window.draw(mushroomsOnTheScreen.at(i));
 	}
+	
 }
 
 void screen::drawPlayer(sf::RenderWindow& window){
@@ -108,13 +109,22 @@ tuple<bool,bool> screen::collisions(){
 	}
 	isDead = spiderBullet1.playerSpider(spider1, playyer);
 	
-	int numberOfCentipedeLeft = 14;
-	numberOfCentipedeLeft = spiderBullet1.bulletCentipede(bulletLoop1,centipede);
-	
-	cout << numberOfCentipedeLeft<<endl;
+	auto numberOfCentipedeLeft = spiderBullet1.bulletCentipede(bulletLoop1,centipede );
 	
 	if(numberOfCentipedeLeft == 0){
 		centipedeArrayEmpty = true;
+	}
+	
+	if (spiderBullet1.getShotCentipedeIndex() > -1)
+	{
+		auto shotIndex=spiderBullet1.getShotCentipedeIndex();
+		auto mushSize=mushroomsOnTheScreen.size();
+		mushroomsOnTheScreen.push_back(mushroom_);
+		
+		mushroomsOnTheScreen.at(mushSize -1).setPosition(centipede.at(shotIndex).getPosition().x, centipede.at(shotIndex).getPosition().y );
+		spiderBullet1.resetShotCentipedeIndex(-1);
+		
+		cout<< "I am in here"<<endl;
 	}
 	
 	return {isDead, centipedeArrayEmpty};

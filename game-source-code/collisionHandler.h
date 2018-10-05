@@ -3,7 +3,7 @@
 #include "bulletContainer.h"
 #include "spider.h"
 #include "laser.h"
-//#include "centipedeTrain.h"
+#include "polyCentipede.h"
 #include "player.h"
 
 
@@ -20,10 +20,18 @@ public:
 	bool playerSpider(Spider& spider1, Player& player1);
 	
 	int bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage);
+	
+	int getShotCentipedeIndex();
+	
+	void resetShotCentipedeIndex(int negativeNumber);
+	
 private:
 	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
-	int centipedesLeft =12;
+	int centipedesLeft =length_of_centipede;
+	
+	int shotCentipedeIndex;
+	
 };
 
 #endif

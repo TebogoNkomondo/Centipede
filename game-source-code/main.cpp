@@ -15,7 +15,7 @@ int main()
 	//render the winow we are working on
 	sf::RenderWindow window (sf::VideoMode(screen_Width, screen_Height),"The Centipede Game",sf::Style::Default);
 	auto startTheGame= false;
-	window.setFramerateLimit(50);
+	window.setFramerateLimit(35);
 	srand(time(0));
 	
 	//make an object of the screen class to initialize its constructor variables

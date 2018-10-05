@@ -44,8 +44,7 @@ public:
 	//=================================================================
 	void handleMushroomCollisions(); 
 
-private:  //Every that is a member of the screen calss should go here:
-	//centipede Segment sprite
+private:  //Every that is a member of the screen calss should go here
 	sf::Sprite centipedeSegment;
 	sf::Texture centipedeTexture;
 	sf::Texture mush_;
