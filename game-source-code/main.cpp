@@ -1,7 +1,6 @@
 //#include "screen.h"
 #include "player.h"
 #include "bulletContainer.h"
-#include "bullet_Centipede_Collison_Handle.h"
 #include "mushroomCollisionHandler.h"
 #include "singleMushroom.h"
 #include <SFML/Graphics.hpp>
@@ -16,7 +15,7 @@ int main()
 	//render the winow we are working on
 	sf::RenderWindow window (sf::VideoMode(screen_Width, screen_Height),"The Centipede Game",sf::Style::Default);
 	auto startTheGame= false;
-	window.setFramerateLimit(35);
+	window.setFramerateLimit(50);
 	srand(time(0));
 	
 	//make an object of the screen class to initialize its constructor variables
@@ -26,7 +25,6 @@ int main()
 	//===================================================================Oratile's member variables===========================================
 	//Declare the centipede train and its size;   
 	polyCentipede polyOne(length_of_centipede);
-	bulletCentipeteCollision bullet_and_centipede;
 	bool collided;
 	
 	//===================================================================Tebogos's member variable=====================================================
@@ -53,16 +51,9 @@ int main()
 				collided= handleMushroomCollisions.isCollision(polyOne, my_screen, i );
 				my_screen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
                 polyOne.myCentipede2.at(i).moveCentipedeSegment(collided);
-				
-				//detect bullet and centipede collisions
-//				if(bullet_and_centipede.isCollision(my_screen.vector<sf::Sprite>& centipedeTrain, ___class object_______ std::vector<Laser>& bulletLoop))
-//				{
-//					bullet_and_centipede.setcentipedeSegmentScale_zero( vector <sf::Sprite>& centipede);
-//				}
 			}
 			
-			
-			
+			my_screen.bullet_Mushroom_Collision();
 			my_screen.drawMushroom(window);
 //================================================================Tebogo goes here==========================================================
 				
@@ -82,12 +73,7 @@ int main()
 			SPScreen.winStatus(window);
 		}
 //==========================================================================================================================================
-			
-			//Game termination stage:
-//			if( polyOne.myCentipede2.at(i).get_xCoordinate() == playerXCoordinate )
-//				if(polyOne.myCentipede2.at(i).get_xCoordinate() == playerYCoordinate )
-//					break;
-			
+
 			window.display();
 			window.clear();
 		}
@@ -97,7 +83,6 @@ int main()
 			window.clear();
 		}
 	}
-	//Display Game Over message
-	//Close the window
+	
 	window.close();
 }

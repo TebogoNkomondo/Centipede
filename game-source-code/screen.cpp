@@ -121,15 +121,15 @@ tuple<bool,bool> screen::collisions(){
 	
 }
 
-/*void screen::bulletCentipede1(){
+void screen::bullet_Mushroom_Collision(){
 	for(size_t i=0;i<bulletLoop1.size();i++){
-		for(size_t t=0;t<centipede.size();t++){
+		for(size_t t=0;t<mushroomsOnTheScreen.size();t++){
 			sf::FloatRect col1 = bulletLoop1.at(i).getBullet().getGlobalBounds();
-			sf::FloatRect col2 = centipede.at(t).getGlobalBounds();
+			sf::FloatRect col2 = mushroomsOnTheScreen.at(t).getGlobalBounds();
 			if(col1.intersects(col2)){
-				centipede.at(t).setScale(0,0);
+				mushroomsOnTheScreen.at(t).setScale(0,0);
 				bulletLoop1.at(i).deleteLaser();
 			}
 		}
 	}
-}*/
+}

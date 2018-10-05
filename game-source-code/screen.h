@@ -29,6 +29,8 @@ public:
 	
 	void drawMushroom(sf::RenderWindow& window);
 	
+	void bullet_Mushroom_Collision();
+	
 	//get the created vector of mushrooms
 	vector <singleMushroom> getVectorOfMushrooms();
 	//the vector of sprite centiede segments
