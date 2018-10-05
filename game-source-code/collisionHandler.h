@@ -21,6 +21,8 @@ public:
 	
 	int bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage);
 	
+	bool playerCentipede(Player& player1, std::vector<sf::Sprite>& centipedeStorage);
+	
 	int getShotCentipedeIndex();
 	int getShot_X();
 	int getShot_Y();

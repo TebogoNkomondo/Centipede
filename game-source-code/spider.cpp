@@ -82,7 +82,7 @@ void Spider::setSpiderPosition(float x, float y){
 }
 
 void Spider::generateSpider(){
-	if(period<500){
+	if(period<50){
 		period++;
 	}
 	else{

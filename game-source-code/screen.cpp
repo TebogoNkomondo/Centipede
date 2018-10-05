@@ -95,6 +95,7 @@ void screen::drawSpider(sf::RenderWindow& window){
 	if(upMovement == true){
 		spider1.moveSpiderDown(horizontalDirection);
 	}
+	spider1.generateSpider();
 }
 
 tuple<bool,bool> screen::collisions(sf::RenderWindow& my_window){

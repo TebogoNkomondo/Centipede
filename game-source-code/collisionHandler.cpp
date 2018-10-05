@@ -78,13 +78,14 @@ void collisionHandler::resetShotCentipedeIndex(int negativeNumber)
 	shotCentipedeIndex= negativeNumber;
 }
 
-/*bool collisionHandler::centipedePlayer(Player& player1, CentipedeTrain& centipede1){
-	for(auto i = centipede1.getCentipedeVector().begin();i<centipede1.getCentipedeVector().end();i++){
-		sf::FloatRect collidingObject1 = (*i).getCentipedeSegment().getGlobalBounds();
-		sf::FloatRect collidingObject2 = player1.GetPlayer().getGlobalBounds();
-		if(collidingObject1.intersects(collidingObject2)){
-			isPlayerDead = true;
+bool collisionHandler::playerCentipede(Player& player1, std::vector<sf::Sprite>& centipedeStorage){
+		bool playerStatus = false;
+		for(auto i = centipedeStorage.begin();i<centipedeStorage.end();i++){
+			sf::FloatRect collidingObject1 = player1.GetPlayer().getGlobalBounds();
+			sf::FloatRect collidingObject2 = (*i).getGlobalBounds();
+			if(collidingObject1.intersects(collidingObject2)){
+				playerStatus = true;
+			}
 		}
-	}
-	return isPlayerDead;
-}*/
+	return playerStatus;
+}
