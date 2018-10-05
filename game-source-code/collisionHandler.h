@@ -22,6 +22,8 @@ public:
 	int bulletCentipede(std::vector<Laser>& bulletStorage1, std::vector<sf::Sprite>& centipedeStorage);
 	
 	int getShotCentipedeIndex();
+	int getShot_X();
+	int getShot_Y();
 	
 	void resetShotCentipedeIndex(int negativeNumber);
 	
@@ -29,8 +31,9 @@ private:
 	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
 	int centipedesLeft =length_of_centipede;
-	
 	int shotCentipedeIndex;
+	int shotSegmentX_position;
+	int shotSegmentY_position;
 	
 };
 

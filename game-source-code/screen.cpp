@@ -117,17 +117,18 @@ tuple<bool,bool> screen::collisions(sf::RenderWindow& my_window){
 	
 	if (spiderBullet1.getShotCentipedeIndex() > -1)
 	{
-		auto shotIndex=spiderBullet1.getShotCentipedeIndex();
 		auto mushSize=mushroomsOnTheScreen.size();
+		auto x= spiderBullet1.getShot_X();
+		auto y= spiderBullet1.getShot_Y();
+		
 		mushroomsOnTheScreen.push_back(mushroom_);
 		
-		mushroomsOnTheScreen.at(mushSize -1).setPosition(centipede.at(shotIndex).getPosition().x, centipede.at(shotIndex).getPosition().y );
+		mushroomsOnTheScreen.at(mushSize -1).setPosition(x, y);
 		my_window.draw(mushroomsOnTheScreen.at(mushSize -1));
 		spiderBullet1.resetShotCentipedeIndex(-1);
-		
-		cout<< "I am in here"<<endl;
 	}
 	
+	cout<< mushroomsOnTheScreen.size() <<endl;
 	return {isDead, centipedeArrayEmpty};
 	
 }

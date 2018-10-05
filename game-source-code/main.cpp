@@ -45,24 +45,24 @@ int main()
 		}
 		//If the Enter button has been pressed: Proceed to play the game
 		if (startTheGame){
+			auto healthStatus = my_screen.collisions(window);
 //=================================================================Oratile goes here========================================================
 		 for(int i= length_of_centipede-1; i> -1; i--)
             {
+				my_screen.drawMushroom(window);
 				collided= handleMushroomCollisions.isCollision(polyOne, my_screen, i );
 				my_screen.draw_Centipede(i, polyOne.myCentipede2.at(i).get_xCoordinate(), polyOne.myCentipede2.at(i).get_yCoordinate(), window);
                 polyOne.myCentipede2.at(i).moveCentipedeSegment(collided);
 			}
-			
-			my_screen.drawMushroom(window);
 //================================================================Tebogo goes here==========================================================
 				
 				my_screen.drawPlayer(window);
 				my_screen.drawSpider(window);
-				auto healthStatus = my_screen.collisions(window);
+				
 				my_screen.bullet_Mushroom_Collision();
 				
-				auto isSpiderPlayerColission = get<0>(healthStatus);
-				auto isCentipedeContainerEmpty = get<1>(healthStatus);
+		auto isSpiderPlayerColission = get<0>(healthStatus);
+		auto isCentipedeContainerEmpty = get<1>(healthStatus);
 		
 		if(isSpiderPlayerColission == true){
 			window.clear();

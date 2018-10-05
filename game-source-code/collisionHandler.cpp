@@ -3,6 +3,8 @@ using namespace std;
 
 collisionHandler::collisionHandler(){
 	shotCentipedeIndex = -1;
+	shotSegmentX_position= 0;
+	shotSegmentY_position= 0;
 }
 
 collisionHandler::~collisionHandler(){
@@ -42,8 +44,11 @@ int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::v
 			sf::FloatRect collidingObject1 = bulletStorage1.at(i).getBullet().getGlobalBounds();
 			sf::FloatRect collidingObject2 = centipedeStorage.at(t).getGlobalBounds();
 			if(collidingObject1.intersects(collidingObject2)){
-				centipedeStorage.at(t).setScale(0,0);
+				shotSegmentX_position= centipedeStorage.at(t).getPosition().x;
+				shotSegmentY_position= centipedeStorage.at(t).getPosition().y;
+				
 				bulletStorage1.at(i).deleteLaser();
+				centipedeStorage.at(t).setScale(0,0);
 				centipedesLeft-=1;
 				shotCentipedeIndex= t;
 			}
@@ -56,6 +61,16 @@ int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::v
 int collisionHandler::getShotCentipedeIndex()
 {
 	return shotCentipedeIndex;
+}
+
+int collisionHandler::getShot_X()
+{
+	return shotSegmentX_position;
+}
+
+int collisionHandler::getShot_Y()
+{
+	return shotSegmentY_position;
 }
 
 void collisionHandler::resetShotCentipedeIndex(int negativeNumber)
