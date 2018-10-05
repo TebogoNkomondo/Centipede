@@ -38,7 +38,7 @@ public:
 	vector <sf::Sprite> mushroomsOnTheScreen;
 	
 	void drawSpider(sf::RenderWindow& window);
-	tuple<bool,bool> collisions();
+	tuple<bool,bool> collisions(sf::RenderWindow& my_window);
 	void bulletCentipede1();
 	
 	//=================================================================

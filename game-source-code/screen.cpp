@@ -97,7 +97,7 @@ void screen::drawSpider(sf::RenderWindow& window){
 	}
 }
 
-tuple<bool,bool> screen::collisions(){
+tuple<bool,bool> screen::collisions(sf::RenderWindow& my_window){
 	bool isAl = false;
 	int k=0;
 	auto kk = spiderBullet1.bulletSpider(spider1,bulletLoop1);
@@ -122,6 +122,7 @@ tuple<bool,bool> screen::collisions(){
 		mushroomsOnTheScreen.push_back(mushroom_);
 		
 		mushroomsOnTheScreen.at(mushSize -1).setPosition(centipede.at(shotIndex).getPosition().x, centipede.at(shotIndex).getPosition().y );
+		my_window.draw(mushroomsOnTheScreen.at(mushSize -1));
 		spiderBullet1.resetShotCentipedeIndex(-1);
 		
 		cout<< "I am in here"<<endl;

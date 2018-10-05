@@ -53,13 +53,13 @@ int main()
                 polyOne.myCentipede2.at(i).moveCentipedeSegment(collided);
 			}
 			
-			my_screen.bullet_Mushroom_Collision();
 			my_screen.drawMushroom(window);
 //================================================================Tebogo goes here==========================================================
 				
 				my_screen.drawPlayer(window);
 				my_screen.drawSpider(window);
-				auto healthStatus = my_screen.collisions();
+				auto healthStatus = my_screen.collisions(window);
+				my_screen.bullet_Mushroom_Collision();
 				
 				auto isSpiderPlayerColission = get<0>(healthStatus);
 				auto isCentipedeContainerEmpty = get<1>(healthStatus);
