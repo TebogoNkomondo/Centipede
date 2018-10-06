@@ -56,18 +56,14 @@ private:  //Every that is a member of the screen calss should go here
 	
 	Player playyer;
 	Spider spider1;
-	BulletContainer bulletVectorr;
-	//BulletContainer bulletT(std::vector<Laser> b);
 	
-	collisionHandler spiderBullet1;
-	//CentipedeTrain myCentipedeTrain;
-	bool mushCol =false;
+	collisionHandler collissionHandle;
 	bool isDead = false;
 	Laser bullet1;
 	std::vector<Laser>bulletLoop1;
 	
+	BulletContainer bulletVectorr;
 	//================================================================================
-	//mushroomCollisionHandler handleMushroomCollisions;
 	bool centipedeArrayEmpty = false;
 
 };

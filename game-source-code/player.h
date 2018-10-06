@@ -1,12 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "movableObject.h"
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <cmath>
-#include <ctime>
-#include <cstdlib>
+#include "movableObject.h"
+#include "spriteGetter.h"
 
 class Player : public movableObject {
 public:
@@ -27,11 +24,13 @@ public:
 	void deletePlayer();
 	
 protected:
-	sf::Texture real_;
+	sf::Texture real1_;
 	sf::Sprite player_;
+	SpriteGetter real_;
 private:
 	int windowWidth = 800;
 	int windowHeight = 600;
+	
 };
 
 #endif

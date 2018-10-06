@@ -3,7 +3,7 @@
 
 #include "player.h"
 #include "movableObject.h"
-
+#include "spriteGetter.h"
 
 class Laser : public movableObject {
 public:
@@ -19,6 +19,7 @@ public:
 private: 
 	sf::Texture laser_;
 	sf::Sprite bullet_;
+	SpriteGetter laser1;
 };
 
 

@@ -1,8 +1,9 @@
 #ifndef SPLASHSCREEN_H
 #define SPLASHSCREEN_H
 #include <SFML/Graphics.hpp>
+#include "scoreTextfile.h"
 
-class SplashScreen{
+class SplashScreen {
 public:
 	SplashScreen();
 	~SplashScreen();
@@ -12,6 +13,9 @@ public:
 private:
 	sf::Text splashMessage;
 	sf::Font font;
+	sf::Text splashMessage2;
+	sf::Text splashMessage3;
+	ScoreTextfile score;
 };
 
 #endif

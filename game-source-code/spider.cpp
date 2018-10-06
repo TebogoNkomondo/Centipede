@@ -3,9 +3,7 @@
 using namespace std;
 
 Spider::Spider(){
-	if(!texture_.loadFromFile("resources/spider.png")){
-		std::cout<<"falied to load spider file"<<endl;
-	}
+	texture_ = spiderTexture_.spiderTexture();
 	spider_.setTexture(texture_);
 	spider_.setScale(sf::Vector2f(0.12,0.07));
 	spider_.setPosition(sf::Vector2f(50,650));
@@ -13,20 +11,19 @@ Spider::Spider(){
 	yPosition = spider_.getPosition().y;
 }
 
-Spider::~Spider(){
-	
-}
+Spider::~Spider(){}
 
 void Spider::drawSpider(sf::RenderWindow& window){
 	window.draw(spider_);
 }
 
 tuple<bool, int> Spider::moveSpiderRight(){
-	if(spider_.getPosition().x < 766 && isRightBound == false){
+	auto rightBound = 766;
+	if(spider_.getPosition().x < rightBound && isRightBound == false){
 		xDirection = 2;
 		isRightBound = false;
 	}
-	else if(spider_.getPosition().x == 766){
+	else if(spider_.getPosition().x == rightBound){
 		isRightBound = true;
 		isLeftBound = false;
 	}
@@ -46,11 +43,12 @@ tuple<bool, int> Spider::moveSpiderLeft(){
 }
 
 bool Spider::moveSpiderUp(int xMovement){
-	if(spider_.getPosition().y >500 && isUpBound ==false){
+	auto playerMovementUpperBound = 500;
+	if(spider_.getPosition().y >playerMovementUpperBound && isUpBound ==false){
 		spider_.move(xMovement,-2);
 		isUpBound = false;
 	}
-	else if(spider_.getPosition().y == 500){
+	else if(spider_.getPosition().y == playerMovementUpperBound){
 		isUpBound = true;
 		isLowBound = false;
 	}
@@ -58,11 +56,12 @@ bool Spider::moveSpiderUp(int xMovement){
 }
 
 bool Spider::moveSpiderDown(int xMovement){
-	if(spider_.getPosition().y < 580 && isLowBound == false){
+	auto playerMovementLowerBound =580;
+	if(spider_.getPosition().y < playerMovementLowerBound && isLowBound == false){
 		spider_.move(xMovement,2);
 		isUpBound =true;
 	}
-	else if(spider_.getPosition().y == 580){
+	else if(spider_.getPosition().y == playerMovementLowerBound){
 		isLowBound = true;
 		isUpBound = false;
 	}
@@ -77,11 +76,7 @@ sf::Sprite Spider::getSpider(){
 	return spider_;
 }
 
-void Spider::setSpiderPosition(float x, float y){
-	spider_.setPosition(x,y);
-}
-
-void Spider::generateSpider(){
+void Spider::regenerateSpider(){
 	if(period<500){
 		period++;
 	}

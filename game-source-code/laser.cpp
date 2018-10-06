@@ -4,27 +4,19 @@
 #include <iostream>
 using namespace std;
 
-
-
 Laser::Laser(){
-	if(!laser_.loadFromFile("resources/bullet.png")){
-		cout<<"falied to load laser file"<<endl;
-	}
+	laser_ = laser1.laserTexture();
 	bullet_.setTexture(laser_);
 	bullet_.setScale(sf::Vector2f(0.2,0.2));
 }
 
-Laser::~Laser(){
-	
-}
+Laser::~Laser(){}
 
 void Laser::DrawBullet(sf::RenderWindow &window){
 	window.draw(bullet_);
 }
 
 void Laser::Shoot(){
-	//moveUp(Direction:: Up);
-	//bullet_.setPosition(xPosition,yPosition);
 	bullet_.move(0,-10);
 }
 
@@ -39,6 +31,5 @@ sf::Sprite Laser::getBullet(){
 
 void Laser::deleteLaser(){
 	bullet_.setScale(0,0);
-	//bullet_.setPosition(100,-2);
 }
 

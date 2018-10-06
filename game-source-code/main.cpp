@@ -8,6 +8,7 @@
 #include <ctime>
 #include <cstdlib>
 #include "collisionHandler.h"
+#include "spriteGetter.h"
 using namespace std;
 
 int main()
@@ -29,6 +30,7 @@ int main()
 	
 	//===================================================================Tebogos's member variable=====================================================
 	SplashScreen SPScreen;
+	SpriteGetter score1;
 //===========================================================================================================================================
 	while(window.isOpen())
     {
@@ -61,6 +63,9 @@ int main()
 				
 				my_screen.bullet_Mushroom_Collision();
 				
+				//score1.writeCurrentScore();
+				//score1.readCurrentScore();
+				
 		auto isSpiderPlayerColission = get<0>(healthStatus);
 		auto isCentipedeContainerEmpty = get<1>(healthStatus);
 		
@@ -72,8 +77,8 @@ int main()
 			window.clear();
 			SPScreen.winStatus(window);
 		}
-//==========================================================================================================================================
 
+//==========================================================================================================================================
 			window.display();
 			window.clear();
 		}
@@ -84,5 +89,5 @@ int main()
 		}
 	}
 	
-	window.close();
+	//window.close();
 }

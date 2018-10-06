@@ -2,6 +2,7 @@
 #define SPIDER_H
 #include "player.h"
 #include "movableObject.h"
+#include "spriteGetter.h"
 #include <tuple>
 
 
@@ -17,17 +18,17 @@ public:
 	
 	void setSpiderPosition(float x, float y);
 	void deleteSpider();
-	void generateSpider();
+	void regenerateSpider();
 	sf::Sprite getSpider();
 	
 protected:
 	sf::Texture texture_;
 	sf::Sprite spider_;
 private:
-
+	SpriteGetter spiderTexture_;
 	int windowWidth = 800;
 	int windowHeight = 600;
-		bool isUpBound = false;
+	bool isUpBound = false;
 	bool isLowBound = false;
 	bool isLeftBound = false;
 	bool isRightBound = false;

@@ -3,20 +3,15 @@
 using namespace std;
 
 Player::Player(){
-
-	if(!real_.loadFromFile("resources/purple.png")){
-		cout<<"falied to load player file"<<endl;
-	}
-	player_.setTexture(real_);
+	real1_ = real_.playerTexture();
+	player_.setTexture(real1_);
 	player_.setScale(sf::Vector2f(0.35,0.35));
 	player_.setPosition(sf::Vector2f(windowWidth/2,windowHeight-windowHeight/20));
 	xPosition = player_.getPosition().x;
 	yPosition = player_.getPosition().y;
 }
 
-Player::~Player(){
-	
-}
+Player::~Player(){}
 
 void Player::Draw(sf::RenderWindow &window){
 	window.draw(player_);

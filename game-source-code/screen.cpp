@@ -64,7 +64,6 @@ void screen::drawPlayer(sf::RenderWindow& window){
 	playyer.handleKey();
 	auto x = bulletVectorr.getXPos();
 	auto y = bulletVectorr.getYPos();
-	
 	playyer.Draw(window);
 	bulletVectorr.shootKey();
 	bulletVectorr.addBullet(x,y, bulletLoop1);
@@ -73,7 +72,6 @@ void screen::drawPlayer(sf::RenderWindow& window){
 	if(bulletLoop1.size() > 2){
 		bulletVectorr.deleteBullets(bulletLoop1);
 	}
-	//cout<< "size"<< bulletLoop1.size()<<endl;
 }
 
 
@@ -95,48 +93,47 @@ void screen::drawSpider(sf::RenderWindow& window){
 	if(upMovement == true){
 		spider1.moveSpiderDown(horizontalDirection);
 	}
-	spider1.generateSpider();
+	spider1.regenerateSpider();
 }
 
 tuple<bool,bool> screen::collisions(sf::RenderWindow& my_window){
 	bool isbulletSpiderCollission = false;
 	int bulletLocation=0;
-	auto bulletLifeStatus = spiderBullet1.bulletSpider(spider1,bulletLoop1);
+	auto bulletLifeStatus = collissionHandle.bulletSpider(spider1,bulletLoop1);
 	
 	isbulletSpiderCollission = get<0>(bulletLifeStatus);
 	if(isbulletSpiderCollission == true){
 		bulletLocation = get<1>(bulletLifeStatus);
 		bulletLoop1.at(bulletLocation).deleteLaser();
 	}
-	isDead = spiderBullet1.playerSpider(spider1, playyer);
+	isDead = collissionHandle.playerSpider(spider1, playyer);
 	
 	int numberOfCentipedeLeft = 12;
-	numberOfCentipedeLeft = spiderBullet1.bulletCentipede(bulletLoop1,centipede);
+	numberOfCentipedeLeft = collissionHandle.bulletCentipede(bulletLoop1,centipede);
 	
 	if(numberOfCentipedeLeft == 0){
 		centipedeArrayEmpty = true;
 	}
 	
 	if(isDead == false){
-		isDead = spiderBullet1.playerCentipede(playyer, centipede);
+		isDead = collissionHandle.playerCentipede(playyer, centipede);
 	}
 	return {isDead, centipedeArrayEmpty};
 	
 		//==================================================================
-	if (spiderBullet1.getShotCentipedeIndex() > -1)
+	if (collissionHandle.getShotCentipedeIndex() > -1)
 	{
 		auto mushSize=mushroomsOnTheScreen.size();
-		auto x= spiderBullet1.getShot_X();
-		auto y= spiderBullet1.getShot_Y();
+		auto x= collissionHandle.getShot_X();
+		auto y= collissionHandle.getShot_Y();
 		
 		mushroomsOnTheScreen.push_back(mushroom_);
 		
 		mushroomsOnTheScreen.at(mushSize -1).setPosition(x, y);
 		my_window.draw(mushroomsOnTheScreen.at(mushSize -1));
-		spiderBullet1.resetShotCentipedeIndex(-1);
+		collissionHandle.resetShotCentipedeIndex(-1);
 	}
 	
-	cout<< mushroomsOnTheScreen.size() <<endl;
 	return {isDead, centipedeArrayEmpty};
 	
 }

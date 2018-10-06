@@ -5,8 +5,7 @@
 #include "laser.h"
 #include "polyCentipede.h"
 #include "player.h"
-
-
+#include "scoreTracker.h"
 
 class collisionHandler  {
 public:
@@ -29,6 +28,8 @@ public:
 	
 	void resetShotCentipedeIndex(int negativeNumber);
 	
+protected:
+	ScoreTracker myscore;
 private:
 	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
