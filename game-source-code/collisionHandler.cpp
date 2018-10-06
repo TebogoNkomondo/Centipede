@@ -2,11 +2,7 @@
 #include <iostream>
 using namespace std;
 
-collisionHandler::collisionHandler(){
-	shotCentipedeIndex = -1;
-	shotSegmentX_position= 0;
-	shotSegmentY_position= 0;
-}
+collisionHandler::collisionHandler(){}
 
 collisionHandler::~collisionHandler(){
 	
@@ -51,11 +47,6 @@ int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::v
 				centipedeStorage.at(t).setScale(0,0);
 				myscore.updateCurrentScore();
 				myscore.updateHighScore();
-				
-				shotSegmentX_position= centipedeStorage.at(t).getPosition().x;
-				shotSegmentY_position= centipedeStorage.at(t).getPosition().y;
-				centipedesLeft-=1;
-				shotCentipedeIndex= t;
 			}
 			
 		}
@@ -63,25 +54,6 @@ int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::v
 	return centipedesLeft;
 }
 
-int collisionHandler::getShotCentipedeIndex()
-{
-	return shotCentipedeIndex;
-}
-
-int collisionHandler::getShot_X()
-{
-	return shotSegmentX_position;
-}
-
-int collisionHandler::getShot_Y()
-{
-	return shotSegmentY_position;
-}
-
-void collisionHandler::resetShotCentipedeIndex(int negativeNumber)
-{
-	shotCentipedeIndex= negativeNumber;
-}
 
 bool collisionHandler::playerCentipede(Player& player1, std::vector<sf::Sprite>& centipedeStorage){
 		bool playerStatus = false;
@@ -95,3 +67,17 @@ bool collisionHandler::playerCentipede(Player& player1, std::vector<sf::Sprite>&
 	return playerStatus;
 }
 
+void collisionHandler::bullet_Mushroom_Collision(std::vector<Laser>& bulletLoop1, std::vector<sf::Sprite>& mushroomsOnTheScreen ){
+	for(auto i= bulletLoop1.begin(); i< bulletLoop1.end() ;i++){
+		for(auto t=mushroomsOnTheScreen.begin(); t<mushroomsOnTheScreen.end();t++){
+			sf::FloatRect col1 = (*i).getBullet().getGlobalBounds();  
+			sf::FloatRect col2 = (*t).getGlobalBounds(); 
+			if(col1.intersects(col2)){
+				(*t).setScale(0,0); 
+				(*i).deleteLaser();
+				myscore.updateCurrentScore();
+				myscore.updateHighScore();
+			}
+		}
+	}
+}

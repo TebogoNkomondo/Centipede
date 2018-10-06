@@ -22,11 +22,7 @@ public:
 	
 	bool playerCentipede(Player& player1, std::vector<sf::Sprite>& centipedeStorage);
 	
-	int getShotCentipedeIndex();
-	int getShot_X();
-	int getShot_Y();
-	
-	void resetShotCentipedeIndex(int negativeNumber);
+	void bullet_Mushroom_Collision(std::vector<Laser>& bulletLoop1, std::vector<sf::Sprite>& mushroomsOnTheScreen );
 	
 protected:
 	ScoreTracker myscore;
@@ -34,9 +30,6 @@ private:
 	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
 	int centipedesLeft =length_of_centipede;
-	int shotCentipedeIndex;
-	int shotSegmentX_position;
-	int shotSegmentY_position;
 	
 };
 
