@@ -27,3 +27,17 @@ sf::Texture SpriteGetter::spiderTexture(){
 	return spiderTexture_;
 }
 
+sf::Texture SpriteGetter::centipedeTexture(){
+    if(!centipedeTexture_.loadFromFile("resources/soccerBall.png"))
+    {
+        cout<< "Load centipede texture failed"<<endl;
+    }
+	return centipedeTexture_;
+}
+
+sf::Texture SpriteGetter::mushroomTexture(){
+	if(!mush_.loadFromFile("resources/mushroom.png")){
+		cout<<"falied to load mushroom file"<<endl;
+	}
+	return mush_;
+}

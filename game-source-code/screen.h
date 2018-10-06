@@ -10,6 +10,7 @@
 #include "spider.h"
 #include <tuple>
 #include "collisionHandler.h"
+#include "spriteGetter.h"
 //#include "mushroomCollisionHandler.h"
 
 using namespace std;
@@ -63,8 +64,8 @@ private:  //Every that is a member of the screen calss should go here
 	std::vector<Laser>bulletLoop1;
 	
 	BulletContainer bulletVectorr;
-	//================================================================================
 	bool centipedeArrayEmpty = false;
+	SpriteGetter spriteGetter_;
 
 };
 

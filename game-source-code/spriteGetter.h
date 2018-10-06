@@ -14,11 +14,16 @@ public:
 	
 	sf::Texture spiderTexture();
 	
+	sf::Texture centipedeTexture();
+	
+	sf::Texture mushroomTexture();
 	
 private:
 	sf::Texture laser_;
 	sf::Texture playerTexure_;
 	sf::Texture spiderTexture_;
+	sf::Texture mush_;
+	sf::Texture centipedeTexture_;
 	
 };
 

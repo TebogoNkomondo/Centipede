@@ -2,10 +2,9 @@
 #define LASER_H
 
 #include "player.h"
-#include "movableObject.h"
 #include "spriteGetter.h"
 
-class Laser : public movableObject {
+class Laser {
 public:
 	Laser();
 	~Laser();

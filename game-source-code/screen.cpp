@@ -5,11 +5,7 @@ using namespace std;
 
 screen::screen()
 {
-	//set up the centipede segment sprite
-    if(!centipedeTexture.loadFromFile("resources/soccerBall.png"))
-    {
-        cout<< "Load centipede texture failed"<<endl;
-    }
+	centipedeTexture = spriteGetter_.centipedeTexture();
     centipedeSegment.setTexture(centipedeTexture);
     centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
 	
@@ -24,9 +20,8 @@ screen::screen()
 	//set up the mushrooms
 	mushroomCollisionHandler mushHandler;
 	numberOfRandomMushrooms= mushHandler.getNumberOfmushrooms();
-	if(!mush_.loadFromFile("resources/mushroom.png")){
-		cout<<"falied to load mushroom file"<<endl;
-	}
+
+	mush_ = spriteGetter_.mushroomTexture();
 	mushroom_.setTexture(mush_);
 	mushroom_.setScale(sf::Vector2f(0.2,0.2));
 	
