@@ -47,6 +47,7 @@ int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::v
 				centipedeStorage.at(t).setScale(0,0);
 				myscore.updateCurrentScore();
 				myscore.updateHighScore();
+				centipedesLeft--;
 			}
 			
 		}

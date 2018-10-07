@@ -47,7 +47,7 @@ int main()
 		}
 		//If the Enter button has been pressed: Proceed to play the game
 		if (startTheGame){
-			auto healthStatus = my_screen.collisions(window);
+			
 //=================================================================Oratile goes here========================================================
 		 for(int i= length_of_centipede-1; i> -1; i--)
             {
@@ -63,20 +63,19 @@ int main()
 				
 				my_screen.bullet_Mushroom_Collision();
 				
-				//score1.writeCurrentScore();
-				//score1.readCurrentScore();
+				auto healthStatus = my_screen.collisions(window);
 				
-		auto isSpiderPlayerColission = get<0>(healthStatus);
-		auto isCentipedeContainerEmpty = get<1>(healthStatus);
-		
-		if(isSpiderPlayerColission == true){
-			window.clear();
-			SPScreen.deadStatus(window);
-		}
-		if(isCentipedeContainerEmpty == true){
-			window.clear();
-			SPScreen.winStatus(window);
-		}
+				auto isSpiderPlayerColission = get<0>(healthStatus);
+				auto isCentipedeContainerEmpty = get<1>(healthStatus);
+				
+				if(isSpiderPlayerColission == true){
+					window.clear();
+					SPScreen.deadStatus(window);
+				}
+				if(isCentipedeContainerEmpty == true){
+					window.clear();
+					SPScreen.winStatus(window);
+				}
 
 //==========================================================================================================================================
 			window.display();
@@ -89,5 +88,5 @@ int main()
 		}
 	}
 	
-	//window.close();
+	window.close();
 }
