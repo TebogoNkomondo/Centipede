@@ -85,3 +85,7 @@ void Spider::regenerateSpider(){
 		period =0;
 	}
 }
+
+void Spider::setSpiderPosition(float x, float y){
+	spider_.setPosition(x,y);
+}

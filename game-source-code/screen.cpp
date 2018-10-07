@@ -52,7 +52,6 @@ void screen::drawMushroom(sf::RenderWindow& my_window)
 	{
 		my_window.draw(mushroomsOnTheScreen.at(i));
 	}
-	
 }
 
 void screen::drawPlayer(sf::RenderWindow& window){

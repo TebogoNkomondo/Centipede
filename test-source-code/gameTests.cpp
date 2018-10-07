@@ -6,6 +6,10 @@
 #include "../game-source-code/laser.h"
 #include "../game-source-code/spider.h"
 #include "../game-source-code/polycentipede.h"
+#include "../game-source-code/collisionHandler.h"
+#include "../game-source-code/scoreTracker.h"
+#include "../game-source-code/scoreTextfile.h"
+
 using namespace std;
 using namespace sf;
 
@@ -120,6 +124,47 @@ TEST_CASE("Check spider movement to the left"){
 	spider6.setSpiderPosition(300,570);
 	spider6.moveSpiderDown(-2);			///we have to test using the down function
 	CHECK(spider6.getSpider().getPosition().x == 298);
+}
+
+//==============================player spider collission tests=====================================
+TEST_CASE("Check if spider-player collision leads to spider death in x"){
+	Spider spider7;
+	Player player7;
+	collisionHandler collisionHandle;
+	spider7.setSpiderPosition(400,520);
+	player7.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider7,player7);
+	CHECK(spider7.getSpider().getScale().x == 0);
+}
+
+TEST_CASE("Check if spider-player collision leads to spider death in y"){
+	Spider spider8;
+	Player player8;
+	collisionHandler collisionHandle;
+	spider8.setSpiderPosition(400,520);
+	player8.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider8,player8);
+	CHECK(spider8.getSpider().getScale().y == 0);
+}
+
+TEST_CASE("Check if spider-player collision leads to player death in x"){
+	Spider spider9;
+	Player player9;
+	collisionHandler collisionHandle;
+	spider9.setSpiderPosition(400,520);
+	player9.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider9, player9);
+	CHECK(player9.GetPlayer().getScale().x == 0);
+}
+
+TEST_CASE("Check if spider-player collision leads to player death in y"){
+	Spider spider10;
+	Player player10;
+	collisionHandler collisionHandle;
+	spider10.setSpiderPosition(400,520);
+	player10.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider10,player10);
+	CHECK(player10.GetPlayer().getScale().y == 0);
 }
 
 
