@@ -623,22 +623,28 @@ TEST_CASE ("Check that a centipede segment reverse direction after colliding a m
 	my_screen.getVectorOfMushrooms();
 	bool isCollision;
 	
+	auto xBeforeCollison= centipedeTrain.myCentipede2.at(0).get_xCoordinate();
 	//keep moving the centipede segment until it hits a mushroom particle
 	do{
 		 centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+		 xBeforeCollison= centipedeTrain.myCentipede2.at(0).get_xCoordinate();
 		 isCollision= handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0);
 	}while(!handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0));
 	
-	//After a collsion has been detected, we must now ensure that the segment's y coordinate has increased;
 	centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(isCollision); 
+	//centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(isCollision); 
 	
-	auto xAfterCollison= centipedeTrain.myCentipede2.at(0).get_yCoordinate();
+	auto xAfterCollison= centipedeTrain.myCentipede2.at(0).get_xCoordinate();
 	
 	//One of these check will pass and the other will fail. This is because we cannot be certain of which direction the centipede
 	//is colliding with mushroom from.
 	
-	CHECK(xAfterCollison == centipedeTrain.myCentipede2.at(0).get_xCoordinate() -5);
-	CHECK (xAfterCollison == centipedeTrain.myCentipede2.at(0).get_xCoordinate() + 5);
+	if(centipedeTrain.myCentipede2.at(0).getRightCollideBoundary())
+		CHECK(xAfterCollison == xBeforeCollison -5);
+	
+	else{
+	CHECK (xAfterCollison == xBeforeCollison + 5 );
+	}
 }
 
 

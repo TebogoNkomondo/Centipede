@@ -27,7 +27,10 @@ public:
     //get y coordinate of centipedeSegment
     double get_yCoordinate();
 	
+	//get which boundary (left of right) the centipede is coming from
+	bool getRightCollideBoundary();
 	
+	bool getLeftCollideBoundary();
     
 private:
     //A movable object should know when it is at the boundary of the screen
@@ -36,6 +39,9 @@ private:
 	bool bottomOfSCreenLeft;
 	bool bottomOfScreenRight;
 	bool mushroomCollisionTurnAndMoveRight;
+	
+	bool leftMushroom;
+	bool rightMushroom;
 	
 	sf::Sprite centipedeSegment1;
 	sf::Texture centipedeTexture1;
