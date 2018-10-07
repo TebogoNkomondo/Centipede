@@ -40,11 +40,6 @@ bool mushroomCollisionHandler::isCollision (polyCentipede& centipedeTrain, scree
 	return collision;
 }
 
-//void centipedeChangeDirection(polyCentipede& centipedeTrain, int index ,bool collision)
-//{
-//	if(collision)
-//}
-
 int mushroomCollisionHandler::getNumberOfmushrooms()
 {
 	return numberOfMushrooms;

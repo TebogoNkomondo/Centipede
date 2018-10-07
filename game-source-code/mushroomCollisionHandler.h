@@ -7,13 +7,27 @@
 class mushroomCollisionHandler
 {
 public:
+///
+///The constructor sets the number of mushrooms to display on the screen
+///
 	mushroomCollisionHandler();
 	
+		/**
+	 * @brief This function performs an algorith to detect if there is a collision between a centipede segment and a mushroom
+	 * @param centipedeTrain: The vector of centipede segments 
+	 * @param 
+	 * @param index: my_screen: The centipede segment index within the vector of centipede segments for which mushroom collision tests are performed
+	 * @return : A boolean is returned after the check algorithm for centipede mushroom collision is done.
+	 * If true: A collision was detected
+	 * If False: No collision detected
+	 */
 	bool isCollision(polyCentipede& centipedeTrain, screen& my_screen, int index); 
 	
+	/**
+	 * @brief return the set number of mushrooms to generate. These mushrooms are generated in the screen class.
+	 * @return: A number indicating how many mushrooms to be generated. 
+	 */
 	int getNumberOfmushrooms();
-	
-	void centipedeChangeDirection(polyCentipede& centipedeTrain, int index ,bool collision);
 	
 private:
 	bool collision;

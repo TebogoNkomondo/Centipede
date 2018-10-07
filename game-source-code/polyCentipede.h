@@ -3,19 +3,23 @@
 
 #include "centipedeSegment.h"
 #include <vector>
-//A centipede must know its length
+///
+///A centipede train must know its length
+///
 #define length_of_centipede 12
 
 //A poly centipede is a centipede train
 class polyCentipede
 {
 public:
-    //A centipede train must know its length
+///
+///The constructor inializes the vectoe size of centipede segments to be equal to passed parameter value: lengthOfCentipede
+//
     polyCentipede(int lengthOfCentipede);
-    //Create a vector of centepede objects 
+///
+///Create a vector of centipede objects 
+///
     vector<centipedeSegment> myCentipede2;
-	
-	//Also create a vector of vectors: vector of type myCentipedes
     
 private:
     int centipedeLength;
