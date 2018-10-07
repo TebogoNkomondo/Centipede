@@ -1,7 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "../game-source-code/player.h"
-#include "../game-source-code/centipede.h"
 #include "../game-source-code/screen.h"
 #include "../game-source-code/laser.h"
 #include "../game-source-code/spider.h"
@@ -488,57 +487,29 @@ TEST_CASE("Check that mushroom that has not been hit by bullet does not die"){
 	CHECK(mushroomsOnTheScreen.at(1).getScale() == sf::Vector2f(0.2f,0.2f));
 }
 //============================================================Poly Centipede Tests=========================================================
-
 TEST_CASE("Check that a centipede segment moves to the right by the moveSpeed (5) ")
 {
-//    //Check that the centipede succesfully moves to the right
+	//    //Check that the centipede succesfully moves to the right
 //    //Check this for only one segment of the centipede.
 //    
-	centipedeSegment centipede1(0,0);
-	centipede1.moveCentipedeSegment(false);
-	//polyCentipede centipedeTrain(1);
-    //centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
-    CHECK(centipede1.get_xCoordinate() == 5);
+	polyCentipede centipedeTrain(1);
+    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+    CHECK(centipedeTrain.myCentipede2.at(0).get_xCoordinate() == 5);
 }
 
-TEST_CASE("Check that a centipede segment moves to the down by the moveSpeed (5) ")
-{
-//    //Check that the centipede succesfully moves to the down
-//    //Check this for only one segment of the centipede.
-//    
-	centipedeSegment centipede1(756,0);
-	centipede1.moveCentipedeSegment(true);
-    CHECK(centipede1.get_yCoordinate() == 15);
-}
-
-TEST_CASE("Check that a centipede segment moves to the left by the moveSpeed (5) ")
-{
-//    //Check that the centipede succesfully moves to the down
-//    //Check this for only one segment of the centipede.
-//    
-	centipedeSegment centipede1(800,0);
-	centipede1.moveCentipedeSegment(false);
-    CHECK(centipede1.get_xCoordinate() == 795);
-}
-
-/*
 TEST_CASE("Check that a centipede segment moves to the down by the moveSpeed (5)* 3")
 {
-    //Check that the centipede succesfully moves down
-    //Check this for only one segment of the centipede.
-    
-    polyCentipede centipedeTrain(1);
+	polyCentipede centipedeTrain(1);
     //we cannot set the centipede to be at the boundary
 	//We hence need to allow it to move
 	//the centipede segment will move down the x coordinate is equal to screen_width -15;
 	do{
-		centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
+		centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
 	}while(centipedeTrain.myCentipede2.at(0).get_xCoordinate() != screen_Width -15);
 	
-    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
+    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
     CHECK(centipedeTrain.myCentipede2.at(0).get_yCoordinate() == 15 );
 }
-
 
 TEST_CASE("Check that the centipede moves to the left")
 {
@@ -549,12 +520,12 @@ TEST_CASE("Check that the centipede moves to the left")
 	 polyCentipede centipedeTrain(1);
 	
 	do{
-		centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
+		centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
 	}while(centipedeTrain.myCentipede2.at(0).get_xCoordinate() != screen_Width -15);
 	
 	//after we have hid the boundary, move the centipede twice
-    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
-	centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
+    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+	centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
 	
 	CHECK(centipedeTrain.myCentipede2.at(0).get_xCoordinate() == screen_Width - (15 +5));
 }
@@ -568,11 +539,32 @@ TEST_CASE("Check a centipede segment's position never exceeds the screen width")
    //we already know that this centipede will be moving by a factor of 5
    for(int i= 0; i< screen_Width; i++)
    {
-	   centipedeTrain.myCentipede2.at(0).moveCentipedeSegment();
+	   centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
    }
    CHECK(centipedeTrain.myCentipede2.at(0).get_xCoordinate() < screen_Width);
    
    CHECK(centipedeTrain.myCentipede2.at(0).get_xCoordinate() > 0);
+}
+
+TEST_CASE ("Check that a centipede goes up after hitting bottom walls of the screen")
+{
+	//We are loking to the test that the centipede segment goes up when it hits the bootom screen boundary
+	//perform tests for one centipede centipede segment 
+   polyCentipede centipedeTrain(1);
+   
+   //we need to place this centipede segment at the bootom screen boudary
+   centipedeTrain.myCentipede2.at(0).set_xCoordinate(-1.0);
+   centipedeTrain.myCentipede2.at(0).set_yCoordinate(screen_Height-10.0);
+   centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+   
+   //After moving the posistion of this segment must have a y coordinate = 685 (800-15-20*5)
+   CHECK(centipedeTrain.myCentipede2.at(0).get_yCoordinate() == 590.0);
+   
+   //Do the same for the other side:
+   centipedeTrain.myCentipede2.at(0).set_xCoordinate(screen_Width-15);
+   centipedeTrain.myCentipede2.at(0).set_yCoordinate(screen_Height-10.0);
+   
+    CHECK(centipedeTrain.myCentipede2.at(0).get_yCoordinate() == 590.0);
 }
 
 //TEST_CASE ("Check that a centipede seperates after coming into contact with a bullet")

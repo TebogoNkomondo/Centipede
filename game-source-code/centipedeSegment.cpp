@@ -79,5 +79,15 @@ double centipedeSegment::get_yCoordinate()
     return yPosition;
 }
 
+void centipedeSegment::set_xCoordinate(double x)
+{
+	xPosition= x;
+}
+
+void centipedeSegment::set_yCoordinate(double y)
+{
+	yPosition= y;
+}
+
 
 
