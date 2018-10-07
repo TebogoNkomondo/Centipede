@@ -30,6 +30,7 @@ private:
 	bool isPlayerDead = false;
 	vector<Laser> bulletVec_;
 	int centipedesLeft =length_of_centipede;
+	bool playerStatus = false;
 	
 };
 

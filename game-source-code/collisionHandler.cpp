@@ -56,12 +56,13 @@ int collisionHandler::bulletCentipede(std::vector<Laser>& bulletStorage1, std::v
 
 
 bool collisionHandler::playerCentipede(Player& player1, std::vector<sf::Sprite>& centipedeStorage){
-		bool playerStatus = false;
+		
 		for(auto i = centipedeStorage.begin();i<centipedeStorage.end();i++){
 			sf::FloatRect collidingObject1 = player1.GetPlayer().getGlobalBounds();
 			sf::FloatRect collidingObject2 = (*i).getGlobalBounds();
 			if(collidingObject1.intersects(collidingObject2)){
 				playerStatus = true;
+				player1.deletePlayer();
 			}
 		}
 	return playerStatus;

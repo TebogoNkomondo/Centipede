@@ -9,6 +9,8 @@
 #include "../game-source-code/collisionHandler.h"
 #include "../game-source-code/scoreTracker.h"
 #include "../game-source-code/scoreTextfile.h"
+#include "../game-source-code/bulletContainer.h"
+#include "../game-source-code/spriteGetter.h"
 
 using namespace std;
 using namespace sf;
@@ -147,6 +149,27 @@ TEST_CASE("Check if spider-player collision leads to spider death in y"){
 	CHECK(spider8.getSpider().getScale().y == 0);
 }
 
+TEST_CASE("Check if spider does not die if no collision occurs for x scale"){
+	Spider spider8;
+	Player player8;
+	collisionHandler collisionHandle;
+	spider8.setSpiderPosition(600,520);
+	player8.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider8,player8);
+	CHECK(spider8.getSpider().getScale().x == 0.12f);
+}
+
+TEST_CASE("Check if spider does not die if no collision occurs for y scale"){
+	Spider spider8;
+	Player player8;
+	collisionHandler collisionHandle;
+	spider8.setSpiderPosition(600,520);
+	player8.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider8,player8);
+	CHECK(spider8.getSpider().getScale().y == 0.07f);
+}
+
+
 TEST_CASE("Check if spider-player collision leads to player death in x"){
 	Spider spider9;
 	Player player9;
@@ -168,6 +191,302 @@ TEST_CASE("Check if spider-player collision leads to player death in y"){
 }
 
 
+TEST_CASE("Check if player does not die if there is no collision for x scale"){
+	Spider spider10;
+	Player player10;
+	collisionHandler collisionHandle;
+	spider10.setSpiderPosition(600,520);
+	player10.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider10,player10);
+	CHECK(player10.GetPlayer().getScale().x == 0.35f);
+}
+
+TEST_CASE("Check if player does not die if there is no collision for y scale"){
+	Spider spider10;
+	Player player10;
+	collisionHandler collisionHandle;
+	spider10.setSpiderPosition(600,520);
+	player10.setPosition(sf::Vector2f(400,520));
+	collisionHandle.playerSpider(spider10,player10);
+	CHECK(player10.GetPlayer().getScale().y == 0.35f);
+}
+
+//===================================bullet spider collision tests============================================================
+TEST_CASE("Check if spider-bullet collision leads to spider death for x scale"){
+	Spider spider11;
+	Laser laser1;
+	Laser laser2;
+	collisionHandler collisionHandle1;
+	spider11.setSpiderPosition(300,300);
+	laser1.setPosition(300,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	collisionHandle1.bulletSpider(spider11, bulletVector);
+	CHECK(spider11.getSpider().getScale().x == 0);
+}
+
+TEST_CASE("Check if spider-bullet collision leads to spider death for y scale"){
+	Spider spider11;
+	Laser laser1;
+	Laser laser2;
+	collisionHandler collisionHandle1;
+	spider11.setSpiderPosition(300,300);
+	laser1.setPosition(300,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	collisionHandle1.bulletSpider(spider11, bulletVector);
+	CHECK(spider11.getSpider().getScale().y == 0);
+}
+
+TEST_CASE("Check if that spider does not die if no collision occurs for y scale"){
+	Spider spider11;
+	Laser laser1;
+	Laser laser2;
+	collisionHandler collisionHandle1;
+	spider11.setSpiderPosition(500,500);
+	laser1.setPosition(300,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	collisionHandle1.bulletSpider(spider11, bulletVector);
+	CHECK(spider11.getSpider().getScale().y == 0.07f);
+}
+
+TEST_CASE("Check if that spider does not die if no collision occurs for x scale"){
+	Spider spider11;
+	Laser laser1;
+	Laser laser2;
+	collisionHandler collisionHandle1;
+	spider11.setSpiderPosition(500,500);
+	laser1.setPosition(300,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	collisionHandle1.bulletSpider(spider11, bulletVector);
+	CHECK(spider11.getSpider().getScale().x == 0.12f);
+}
+
+//=========================================================Player-centipede collision tests=============================================
+TEST_CASE("Check that player-centipede collision is detected"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	Player player2;
+	collisionHandler collisionHandle2;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment1.setPosition(300,300);
+	centipedeSegment.setPosition(400,400);
+	player2.setPosition(sf::Vector2f(300,300));
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	auto isCollision = collisionHandle2.playerCentipede(player2,centipede);
+	CHECK(isCollision == true);
+}
+
+TEST_CASE("Check that no collision is detected between player and centipede when no collision occurs"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	Player player2;
+	collisionHandler collisionHandle2;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment1.setPosition(500,300);
+	centipedeSegment.setPosition(400,400);
+	player2.setPosition(sf::Vector2f(300,300));
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	auto isCollision = collisionHandle2.playerCentipede(player2,centipede);
+	CHECK(isCollision == false);
+}
+
+TEST_CASE("Check that player dies upon collision with centipede for x scale"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	Player player2;
+	collisionHandler collisionHandle2;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment1.setPosition(300,300);
+	centipedeSegment.setPosition(400,400);
+	player2.setPosition(sf::Vector2f(300,300));
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	collisionHandle2.playerCentipede(player2,centipede);
+	CHECK(player2.GetPlayer().getScale().x == 0);
+}
+
+TEST_CASE("Check that player dies upon collision with centipede for y scale"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	Player player2;
+	collisionHandler collisionHandle2;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment1.setPosition(300,300);
+	centipedeSegment.setPosition(400,400);
+	player2.setPosition(sf::Vector2f(300,300));
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	collisionHandle2.playerCentipede(player2,centipede);
+	CHECK(player2.GetPlayer().getScale().y == 0);
+}
+
+//=========================================================Centipede-bullet collision tests==============================================
+TEST_CASE("Check that centipede segment gets killed after being hit by bullet for x scale"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment.setPosition(300,300);
+	centipedeSegment1.setPosition(400,400);
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	
+	Laser laser1;
+	Laser laser2;
+	laser1.setPosition(300,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	
+	collisionHandler collisionHandle;
+	collisionHandle.bulletCentipede(bulletVector,centipede);
+	
+	CHECK(centipede.at(0).getScale().x == 0);
+}
+
+TEST_CASE("Check that centipede segment gets killed after being hit by bullet for y scale"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment.setPosition(300,300);
+	centipedeSegment1.setPosition(400,400);
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	
+	Laser laser1;
+	Laser laser2;
+	laser1.setPosition(300,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	
+	collisionHandler collisionHandle;
+	collisionHandle.bulletCentipede(bulletVector,centipede);
+	
+	CHECK(centipede.at(0).getScale().y == 0);
+}
+
+TEST_CASE("Check that centipede segment that hasn't been hit by bullet does not die"){
+	vector <sf::Sprite> centipede;
+	sf::Sprite centipedeSegment;
+	SpriteGetter spriteGetter_;
+	auto centipedeTexture = spriteGetter_.centipedeTexture();
+    centipedeSegment.setTexture(centipedeTexture);
+    centipedeSegment.setScale(sf::Vector2f(0.14,0.14));
+	sf::Sprite centipedeSegment1 = centipedeSegment;
+	centipedeSegment.setPosition(300,300);
+	centipedeSegment1.setPosition(400,400);
+	centipede.push_back(centipedeSegment);
+	centipede.push_back(centipedeSegment1);
+	
+	Laser laser1;
+	Laser laser2;
+	laser1.setPosition(500,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	
+	collisionHandler collisionHandle;
+	collisionHandle.bulletCentipede(bulletVector,centipede);
+	
+	CHECK(centipede.at(0).getScale() == sf::Vector2f(0.14f,0.14f));
+}
+//=========================================================Mushroom-bullet collision tests=============================================
+TEST_CASE("Check that mushroom that has been hit by bullet dies"){
+	vector <sf::Sprite> mushroomsOnTheScreen;
+	SpriteGetter spriteGetter_;
+	sf::Texture mush_;
+	sf::Sprite mushroom_;
+	sf::Sprite mushroom_1;
+	mush_ = spriteGetter_.mushroomTexture();
+	mushroom_.setTexture(mush_);
+	mushroom_.setScale(sf::Vector2f(0.2,0.2));
+	mushroom_1 = mushroom_;
+	mushroom_.setPosition(500,300);
+	mushroom_1.setPosition(700,500);
+	
+	mushroomsOnTheScreen.push_back(mushroom_);
+	mushroomsOnTheScreen.push_back(mushroom_1);
+	Laser laser1;
+	Laser laser2;
+	laser1.setPosition(500,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	
+	collisionHandler collisionHandle;
+	collisionHandle.bullet_Mushroom_Collision(bulletVector,mushroomsOnTheScreen);
+	CHECK(mushroomsOnTheScreen.at(0).getScale() == sf::Vector2f(0,0));
+}
+
+
+TEST_CASE("Check that mushroom that has not been hit by bullet does not die"){
+	vector <sf::Sprite> mushroomsOnTheScreen;
+	SpriteGetter spriteGetter_;
+	sf::Texture mush_;
+	sf::Sprite mushroom_;
+	sf::Sprite mushroom_1;
+	mush_ = spriteGetter_.mushroomTexture();
+	mushroom_.setTexture(mush_);
+	mushroom_.setScale(sf::Vector2f(0.2,0.2));
+	mushroom_1 = mushroom_;
+	mushroom_.setPosition(500,300);
+	mushroom_1.setPosition(700,500);
+	
+	mushroomsOnTheScreen.push_back(mushroom_);
+	mushroomsOnTheScreen.push_back(mushroom_1);
+	Laser laser1;
+	Laser laser2;
+	laser1.setPosition(500,300);
+	laser2.setPosition(400,400);
+	std::vector<Laser> bulletVector;
+	bulletVector.push_back(laser1);
+	bulletVector.push_back(laser2);
+	
+	collisionHandler collisionHandle;
+	collisionHandle.bullet_Mushroom_Collision(bulletVector,mushroomsOnTheScreen);
+	CHECK(mushroomsOnTheScreen.at(1).getScale() == sf::Vector2f(0.2f,0.2f));
+}
 //============================================================Poly Centipede Tests=========================================================
 
 TEST_CASE("Check that a centipede segment moves to the right by the moveSpeed (5) ")
