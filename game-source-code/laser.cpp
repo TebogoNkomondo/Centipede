@@ -3,7 +3,9 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
+/*
+	Constructor initialises laser dimensions
+ */
 Laser::Laser(){
 	laser_ = laser1.laserTexture();
 	bullet_.setTexture(laser_);
