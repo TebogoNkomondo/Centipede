@@ -10,6 +10,8 @@
 #include "../game-source-code/scoreTextfile.h"
 #include "../game-source-code/bulletContainer.h"
 #include "../game-source-code/spriteGetter.h"
+#include "../game-source-code/mushroomCollisionHandler.h"
+
 
 using namespace std;
 using namespace sf;
@@ -557,7 +559,7 @@ TEST_CASE ("Check that a centipede goes up after hitting bottom walls of the scr
    centipedeTrain.myCentipede2.at(0).set_yCoordinate(screen_Height-10.0);
    centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
    
-   //After moving the posistion of this segment must have a y coordinate = 685 (800-15-20*5)
+   //After moving the posistion of this segment must have a y coordinate
    CHECK(centipedeTrain.myCentipede2.at(0).get_yCoordinate() == 590.0);
    
    //Do the same for the other side:
@@ -567,8 +569,76 @@ TEST_CASE ("Check that a centipede goes up after hitting bottom walls of the scr
     CHECK(centipedeTrain.myCentipede2.at(0).get_yCoordinate() == 590.0);
 }
 
-//TEST_CASE ("Check that a centipede seperates after coming into contact with a bullet")
+//======================================================Mushroom and centipede Collisions=====================================================================================
+TEST_CASE ("Check that a centipede and mushroom collision is detected")
+{
+	//we must first declare a centipede train
+	polyCentipede centipedeTrain(1);
+	//We also need to pass a screen object;
+	screen my_screen;
+	mushroomCollisionHandler handleMushroomCollisions;
+	
+	//Get the vector of mushrooms that was initialized
+	my_screen.getVectorOfMushrooms();
+	
+	//keep moving the centipede segment until it hits a mushroom particle
+	do{
+		 centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+	}while(!handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0));
+	
+	//This loop will stop when isCollison returns a true
+	CHECK(handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0) == true);
+}
 
+TEST_CASE ("After a collision has been detected, check that all centipede segments move down")
+{
+	polyCentipede centipedeTrain(1);
+	screen my_screen;
+	mushroomCollisionHandler handleMushroomCollisions;
+	
+	my_screen.getVectorOfMushrooms();
+	auto yBeforeCollision= centipedeTrain.myCentipede2.at(0).get_yCoordinate();
+	bool isCollision;
+	
+	//keep moving the centipede segment until it hits a mushroom particle
+	do{
+		 centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+		 yBeforeCollision= centipedeTrain.myCentipede2.at(0).get_yCoordinate();
+		 isCollision= handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0);
+	}while(!handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0));
+	
+	//After a collsion has been detected, we must now ensure that the segment's y coordinate has increased;
+	centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(isCollision);
+	auto yAfterCollison= centipedeTrain.myCentipede2.at(0).get_yCoordinate();
 
-//TEST_CASE ("Check that a centipede changes direction after colliding with a mushroom")*/
+	CHECK(yAfterCollison == yBeforeCollision + 15);
+}
+
+TEST_CASE ("Check that a centipede segment reverse direction after colliding a mushroom")
+{
+	polyCentipede centipedeTrain(1);
+	screen my_screen;
+	mushroomCollisionHandler handleMushroomCollisions;
+	
+	my_screen.getVectorOfMushrooms();
+	bool isCollision;
+	
+	//keep moving the centipede segment until it hits a mushroom particle
+	do{
+		 centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(false);
+		 isCollision= handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0);
+	}while(!handleMushroomCollisions.isCollision(centipedeTrain, my_screen,0));
+	
+	//After a collsion has been detected, we must now ensure that the segment's y coordinate has increased;
+	centipedeTrain.myCentipede2.at(0).moveCentipedeSegment(isCollision); 
+	
+	auto xAfterCollison= centipedeTrain.myCentipede2.at(0).get_yCoordinate();
+	
+	//One of these check will pass and the other will fail. This is because we cannot be certain of which direction the centipede
+	//is colliding with mushroom from.
+	
+	CHECK(xAfterCollison == centipedeTrain.myCentipede2.at(0).get_xCoordinate() -5);
+	CHECK (xAfterCollison == centipedeTrain.myCentipede2.at(0).get_xCoordinate() + 5);
+}
+
 
