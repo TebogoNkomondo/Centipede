@@ -20,22 +20,22 @@ public:
     movableObject();
 	/**
 	 * @brief This constructor does nothing
-	 * @param Down: This parameter is passed to indicate that the moveable object must move Down
+	 * @param Down : the parameter is passed to indicate that the moveable object must move Down
 	 */
     virtual void moveDown(Direction Down);
 	/**
 	 * @brief 
-	 * @param Up: This parameter is passed to indicate that the moveable object must move Up
+	 * @param Up : the parameter is passed to indicate that the moveable object must move Up
 	 */
     virtual void moveUp(Direction Up);
 	/**
 	 * @brief 
-	 * @param Right:This parameter is passed to indicate that the moveable object must move Right
+	 * @param Right :this parameter is passed to indicate that the moveable object must move Right
 	 */
     virtual void moveRight(Direction Right);
 	/**
 	 * @brief 
-	 * @param Left: This parameter is passed to indicate that the moveable object must move Left
+	 * @param Left : this parameter is passed to indicate that the moveable object must move Left
 	 */
     virtual void moveLeft(Direction Left);
     
