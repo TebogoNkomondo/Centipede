@@ -7,8 +7,6 @@ Spider::Spider(){
 	spider_.setTexture(texture_);
 	spider_.setScale(sf::Vector2f(0.12,0.07));
 	spider_.setPosition(sf::Vector2f(50,650));
-	xPosition = spider_.getPosition().x;
-	yPosition = spider_.getPosition().y;
 }
 
 Spider::~Spider(){}
