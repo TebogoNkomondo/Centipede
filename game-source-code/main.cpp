@@ -1,4 +1,3 @@
-//#include "screen.h"
 #include "player.h"
 #include "bulletContainer.h"
 #include "mushroomCollisionHandler.h"
