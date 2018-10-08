@@ -1,13 +1,9 @@
-#include "player.h"
-#include "bulletContainer.h"
 #include "mushroomCollisionHandler.h"
 #include "singleMushroom.h"
 #include <SFML/Graphics.hpp>
 #include "splashScreen.h"
 #include <ctime>
 #include <cstdlib>
-#include "collisionHandler.h"
-#include "spriteGetter.h"
 using namespace std;
 
 int main()
@@ -21,12 +17,10 @@ int main()
 	//make an object of the screen class to initialize its constructor variables
 	screen my_screen;
 	mushroomCollisionHandler handleMushroomCollisions;
-	
 	//===================================================================Oratile's member variables===========================================
 	//Declare the centipede train and its size;   
 	polyCentipede polyOne(length_of_centipede);
 	bool collided;
-	
 	//===================================================================Tebogos's member variable=====================================================
 	SplashScreen SPScreen;
 	SpriteGetter score1;
@@ -58,12 +52,10 @@ int main()
                 polyOne.myCentipede2.at(i).moveCentipedeSegment(collided);
 			}
 //================================================================Tebogo goes here==========================================================
-				
 				my_screen.drawPlayer(window);
 				my_screen.drawSpider(window);
 				
 				my_screen.bullet_Mushroom_Collision();
-				
 				auto healthStatus = my_screen.collisions(window);
 				
 				auto isSpiderPlayerColission = get<0>(healthStatus);
@@ -83,7 +75,6 @@ int main()
 					window.clear();
 					SPScreen.winStatus(window);
 				}
-
 //==========================================================================================================================================
 			window.display();
 			window.clear();
@@ -97,6 +88,5 @@ int main()
 			window.clear();
 		}
 	}
-	
 	window.close();
 }
