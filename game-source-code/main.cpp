@@ -44,7 +44,9 @@ int main()
 				startTheGame = true;
 			}
 		}
-		//If the Enter button has been pressed: Proceed to play the game
+		///
+		///If the Enter button has been pressed: Proceed to play the game
+		///
 		if (startTheGame){
 			
 //=================================================================Oratile goes here========================================================
@@ -67,10 +69,16 @@ int main()
 				auto isSpiderPlayerColission = get<0>(healthStatus);
 				auto isCentipedeContainerEmpty = get<1>(healthStatus);
 				
+				/**
+				 * @brief game ends if the player collids with a spider or centipede
+				 */
 				if(isSpiderPlayerColission == true){
 					window.clear();
 					SPScreen.deadStatus(window);
 				}
+				/**
+				 * @brief game ends if all centipedes have been killed
+				 */
 				if(isCentipedeContainerEmpty == true){
 					window.clear();
 					SPScreen.winStatus(window);
@@ -80,6 +88,9 @@ int main()
 			window.display();
 			window.clear();
 		}
+		/**
+		 * display the screen at the start of the game
+		 */
 		else{
 			SPScreen.drawSplashScreen(window);
 			window.display();
